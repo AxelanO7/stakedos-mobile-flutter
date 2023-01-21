@@ -34,6 +34,7 @@ class _ListStatusMobilePageState extends State<ListStatusMobilePage>
                 children: [
                   _header(context, controller),
                   ListView.builder(
+                    physics: ScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: controller.dosenList.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -80,41 +81,32 @@ class _ListStatusMobilePageState extends State<ListStatusMobilePage>
               Container(
                 color: Colors.red,
                 width: 32,
-                child: Expanded(
-                  flex: 1,
-                  child: Text(
-                    '#',
-                    style: TypographyStyle.body1SemiBold.copyWith(
-                      color: ColorStyle().grayscaleRange[800],
-                    ),
-                    textAlign: TextAlign.center,
+                child: Text(
+                  '#',
+                  style: TypographyStyle.body1SemiBold.copyWith(
+                    color: ColorStyle().grayscaleRange[800],
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ),
-              Expanded(
-                flex: 3,
-                child: Container(
-                  color: Colors.blue,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Text(
-                      'Nama Dosen',
-                      style: TypographyStyle.body1SemiBold
-                          .copyWith(color: ColorStyle().grayscaleRange[800]),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  color: Colors.green,
+              Container(
+                color: Colors.blue,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16),
                   child: Text(
-                    'Status',
-                    textAlign: TextAlign.center,
+                    'Nama Dosen',
                     style: TypographyStyle.body1SemiBold
                         .copyWith(color: ColorStyle().grayscaleRange[800]),
                   ),
+                ),
+              ),
+              Container(
+                color: Colors.green,
+                child: Text(
+                  'Status',
+                  textAlign: TextAlign.center,
+                  style: TypographyStyle.body1SemiBold
+                      .copyWith(color: ColorStyle().grayscaleRange[800]),
                 ),
               ),
             ],

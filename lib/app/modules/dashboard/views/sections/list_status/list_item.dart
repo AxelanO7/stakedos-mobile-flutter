@@ -1,7 +1,5 @@
 import 'package:stakedos/app/core/base_import.dart';
 import 'package:stakedos/app/modules/dashboard/views/sections/list_status/controller.dart';
-import 'package:stakedos/app/providers/list_dosen.dart';
-import 'package:provider/provider.dart';
 
 class ListItem extends StatefulWidget {
   final ListStatusController controller;
@@ -27,32 +25,26 @@ class _ListItemState extends State<ListItem> {
               Container(
                 color: Colors.yellow,
                 width: 32,
-                child: Expanded(flex: 1, child: Text('${widget.item?.id}')),
+                child: Text('${widget.item?.id}'),
               ),
-              Expanded(
-                flex: 3,
-                child: Container(
-                  color: Colors.blueGrey,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Text(
-                      '${widget.item?.firstName}',
-                      style: TypographyStyle.body1SemiBold
-                          .copyWith(color: ColorStyle().grayscaleRange[800]),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  color: Colors.orange,
+              Container(
+                color: Colors.blueGrey,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16),
                   child: Text(
-                    '${widget.item?.lastName}',
-                    textAlign: TextAlign.center,
+                    '${widget.item?.firstName}',
                     style: TypographyStyle.body1SemiBold
                         .copyWith(color: ColorStyle().grayscaleRange[800]),
                   ),
+                ),
+              ),
+              Container(
+                color: Colors.orange,
+                child: Text(
+                  '${widget.item?.lastName}',
+                  textAlign: TextAlign.center,
+                  style: TypographyStyle.body1SemiBold
+                      .copyWith(color: ColorStyle().grayscaleRange[800]),
                 ),
               ),
             ],

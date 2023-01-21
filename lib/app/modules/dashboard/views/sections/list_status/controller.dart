@@ -52,7 +52,7 @@ class ListStatusController extends BaseController {
   @override
   onReady() async {
     isLoading = false;
-    getDosenListData();
+    await getDosenListData();
     update();
     super.onReady();
   }
