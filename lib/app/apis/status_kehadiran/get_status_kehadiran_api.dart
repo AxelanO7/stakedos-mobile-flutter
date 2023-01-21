@@ -4,8 +4,7 @@ import 'package:stakedos/app/core/base_api.dart';
 import 'package:stakedos/app/core/base_import.dart';
 
 class GetStatusKehadiranApi extends BaseApi {
-  String url =
-      'https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app/dosenList.json';
+  String url = 'https://reqres.in/api/users?page=1';
 
   Future<ResultApi> request() async {
     if (CoreConfig.getDebuggableConfig("is_debug_mode"))
