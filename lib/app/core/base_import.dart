@@ -1,0 +1,12 @@
+export 'package:get/get.dart';
+export 'package:flutter/material.dart';
+export 'package:flutter/services.dart';
+export '../helpers/index.dart';
+export '../utils/index.dart';
+export '../configs/index.dart';
+export '../styles/index.dart';
+export '../widgets/index.dart';
+export '../models/index.dart' hide ResultApi;
+export 'base_controller.dart';
+export 'base_widget.dart';
+export 'base_model.dart';

@@ -1,0 +1,108 @@
+name: stakedos
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.18.5 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.5
+  flutter: 
+    sdk: flutter
+  flutter_svg: ^1.1.6
+  lottie: ^2.1.0
+  intl: ^0.17.0
+  jovial_svg: ^1.1.7
+  flutter_typeahead: ^4.1.1
+  get_storage: ^2.0.3
+  http: ^0.13.5
+  flutter_easyrefresh: ^2.2.2
+  firebase_core: ^2.4.1
+  provider: ^5.0.0
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+  json_to_model: 
+      git:
+        url: https://github.com/idabgsram/json_to_model
+  json_serializable: ^6.1.1
+  json_annotation: ^4.4.0
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/fonts/
+    - assets/illustrations/
+    - assets/icons/
+    - assets/animations/
+
+  fonts:
+    - family: RowdiesBold
+      fonts:
+        - asset: assets/fonts/Rowdies/Rowdies-Bold.ttf
+          style: normal
+    - family: RowdiesReguler
+      fonts:
+        - asset: assets/fonts/Rowdies/Rowdies-Regular.ttf
+          style: normal
+    - family: RowdiesLight
+      fonts:
+        - asset: assets/fonts/Rowdies/Rowdies-Light.ttf
+          style: normal
+    - family: PoppinsBlack
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-Black.ttf
+          style: normal
+        - asset: assets/fonts/Poppins/Poppins-BlackItalic.ttf
+          style: italic
+    - family: PoppinsBold
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-Bold.ttf
+          style: normal
+        - asset: assets/fonts/Poppins/Poppins-BoldItalic.ttf
+          style: italic
+    - family: PoppinsExtraBold
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-ExtraBold.ttf
+          style: normal
+        - asset: assets/fonts/Poppins/Poppins-ExtraBoldItalic.ttf
+          style: italic
+    - family: PoppinsExtraLight
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-ExtraLight.ttf
+          style: normal
+        - asset: assets/fonts/Poppins/Poppins-ExtraLightItalic.ttf
+          style: italic
+    - family: PoppinsLight
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-Light.ttf
+          style: normal
+        - asset: assets/fonts/Poppins/Poppins-LightItalic.ttf
+          style: italic
+    - family: PoppinsMedium
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-Medium.ttf
+          style: normal
+        - asset: assets/fonts/Poppins/Poppins-MediumItalic.ttf
+          style: italic
+    - family: PoppinsRegular
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-Regular.ttf
+          style: normal
+    - family: PoppinsSemiBold
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-SemiBold.ttf
+          style: normal
+        - asset: assets/fonts/Poppins/Poppins-SemiBoldItalic.ttf
+          style: italic
+    - family: PoppinsThin
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-Thin.ttf
+          style: normal
+        - asset: assets/fonts/Poppins/Poppins-ThinItalic.ttf
+          style: italic

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "618554579294",
+    "project_id": "stakedos-23d7b",
+    "storage_bucket": "stakedos-23d7b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618554579294:android:02ecf5876f17a65b5197cf",
+        "android_client_info": {
+          "package_name": "com.example.stakedos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618554579294-68t5l55ksiuof6emh1m3ks1llrhoaltu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWcFpJdqiDAun7yxMHNjBRineVMKERHBs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618554579294-68t5l55ksiuof6emh1m3ks1llrhoaltu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

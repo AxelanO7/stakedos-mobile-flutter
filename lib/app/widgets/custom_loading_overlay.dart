@@ -1,0 +1,129 @@
+import 'package:stakedos/app/core/base_import.dart';
+import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+
+/// Our custom fork of https://pub.dev/packages/modal_progress_hud adding a fading effect
+///
+/// wrapper around any widget that makes an async call to show a modal progress
+/// indicator while the async call is in progress.
+///
+/// The progress indicator can be turned on or off using [isLoading]
+///
+/// The progress indicator defaults to a [CircularProgressIndicator] but can be
+/// any kind of widget
+///
+/// The color of the modal barrier can be set using [color]
+///
+/// The opacity of the modal barrier can be set using [opacity]
+///
+/// HUD=Heads Up Display
+///
+class LoadingOverlay extends StatefulWidget {
+  final bool isLoading;
+  final double opacity;
+  final Color? color;
+  final Widget? progressIndicator;
+  final Widget child;
+
+  LoadingOverlay({
+    required this.isLoading,
+    required this.child,
+    this.opacity = 0.5,
+    this.progressIndicator,
+    this.color,
+  });
+
+  @override
+  _LoadingOverlayState createState() => _LoadingOverlayState();
+}
+
+class _LoadingOverlayState extends State<LoadingOverlay>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  bool? _overlayVisible;
+
+  _LoadingOverlayState();
+
+  Widget progressIndicatorDefault = Container(
+    height: 100,
+    width: 100,
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(16)),
+        color: Colors.white),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Lottie.asset('assets/animations/loader.json',
+            width: 54, height: 54, frameRate: FrameRate(60)),
+      ],
+    ),
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    _overlayVisible = false;
+    _controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+    _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
+    _animation.addStatusListener((status) {
+      // ignore: unnecessary_statements
+      status == AnimationStatus.forward
+          ? setState(() => {_overlayVisible = true})
+          : null;
+      // ignore: unnecessary_statements
+      status == AnimationStatus.dismissed
+          ? setState(() => {_overlayVisible = false})
+          : null;
+    });
+    if (widget.isLoading) {
+      _controller.forward();
+    }
+  }
+
+  @override
+  void didUpdateWidget(LoadingOverlay oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (!oldWidget.isLoading && widget.isLoading) {
+      _controller.forward();
+    }
+
+    if (oldWidget.isLoading && !widget.isLoading) {
+      _controller.reverse();
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var widgets = <Widget>[];
+    widgets.add(widget.child);
+
+    if (_overlayVisible == true) {
+      final modal = FadeTransition(
+        opacity: _animation,
+        child: Stack(
+          children: <Widget>[
+            Opacity(
+              child: ModalBarrier(
+                dismissible: false,
+                color: widget.color ?? ColorStyle().grayscaleRange[400]!,
+              ),
+              opacity: widget.opacity,
+            ),
+            Center(child: widget.progressIndicator ?? progressIndicatorDefault),
+          ],
+        ),
+      );
+      widgets.add(modal);
+    }
+
+    return Stack(children: widgets);
+  }
+}

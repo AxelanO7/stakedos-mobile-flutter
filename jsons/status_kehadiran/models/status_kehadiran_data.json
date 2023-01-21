@@ -1,0 +1,12 @@
+{
+    "catatan": "saya dikampus hingga pukul 17.00",
+    "id": 4,
+    "kehadiran_tempat": "r301",
+    "nama_dosen": "pak_axel",
+    "nidn": 19101437,
+    "no_telepon": "082210487700",
+    "password": "pass1",
+    "status_kehadiran": "hadir",
+    "tipe_akun": "dosen",
+    "token": "abcdefghijklmnopqrstuvwxyz"
+}
