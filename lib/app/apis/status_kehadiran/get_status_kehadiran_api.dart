@@ -11,9 +11,12 @@ class GetStatusKehadiranApi extends BaseApi {
       LogUtils.log(requestPayload);
 
     try {
-      await generateHeader(withToken: true);
+      // await generateHeader(withToken: true);
 
-      var response = await get(Uri.parse(url), headers: requestHeaders);
+      var response = await get(
+        Uri.parse(url),
+        // headers: requestHeaders
+      );
 
       checkResponse(response);
 
