@@ -36,9 +36,9 @@ class _ListStatusMobilePageState extends State<ListStatusMobilePage>
                   ListView.builder(
                     physics: ScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: controller.dosenList.length,
+                    itemCount: controller.testList.length,
                     itemBuilder: (BuildContext context, int index) {
-                      var item = controller.dosenList[index];
+                      var item = controller.reqresList[index];
                       return ListItem(controller, item, index);
                     },
                   ),

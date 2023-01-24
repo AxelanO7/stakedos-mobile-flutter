@@ -1,14 +1,14 @@
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:stakedos/app/apis/status_kehadiran/get_status_kehadiran_api.dart';
+import 'package:stakedos/app/apis/reqres/get_reqres_api.dart';
 import 'package:stakedos/app/core/base_import.dart';
 import 'package:stakedos/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:stakedos/app/providers/list_dosen.dart';
-import 'package:provider/provider.dart';
 
 class ListStatusController extends BaseController {
   var mainScrollController = ScrollController();
   final DashboardController rootController;
   List<StatusKehadiranData?> dosenList = [];
+  List<TestData?> testList = [];
+  List<ReqresData?> reqresList = [];
   StatusKehadiranData? selectedStatus;
 
   EasyRefreshController refreshController = EasyRefreshController();
@@ -44,16 +44,13 @@ class ListStatusController extends BaseController {
     //   ..namaDosen = 'dosen3'
     //   ..statusKehadiran = 'hadir');
 
-    super.onInit();
     isLoading = true;
-    update();
+    super.onInit();
   }
 
   @override
   onReady() async {
-    isLoading = true;
     await getDosenListData();
-    update();
     super.onReady();
   }
 
@@ -65,14 +62,14 @@ class ListStatusController extends BaseController {
   getDosenListData() async {
     isLoadingStatus = true;
     update();
-    var result = await GetStatusKehadiranApi().request();
+    var result = await GetReqresApi().request();
     if (result.statusCode == 200) {
-      dosenList = [];
-      var data = result.listData as List<StatusKehadiranData?>;
+      reqresList = [];
+      var data = result.data as List<ReqresData?>;
       data.forEach(
         (element) {
           if (element != null) {
-            dosenList.add(element);
+            reqresList.add(element);
           }
         },
       );

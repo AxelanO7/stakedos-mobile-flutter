@@ -3,7 +3,7 @@ import 'package:stakedos/app/modules/dashboard/views/sections/list_status/contro
 
 class ListItem extends StatefulWidget {
   final ListStatusController controller;
-  final StatusKehadiranData? item;
+  final ReqresData? item;
   final int index;
 
   ListItem(this.controller, this.item, this.index);
