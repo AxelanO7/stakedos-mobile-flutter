@@ -1,3 +1,4 @@
+import 'package:lottie/lottie.dart';
 import 'package:stakedos/app/core/base_import.dart';
 import 'package:stakedos/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
@@ -5,48 +6,62 @@ import 'package:stakedos/app/modules/dashboard/views/sections/list_status/list_i
 
 import 'controller.dart';
 
-class ListStatusMobilePage extends StatefulWidget {
+class ListStatusMobilePage extends StatelessWidget {
   final DashboardController rootController;
   const ListStatusMobilePage({Key? key, required this.rootController})
       : super(key: key);
-  @override
-  _ListStatusMobilePageState createState() => _ListStatusMobilePageState();
-}
 
-class _ListStatusMobilePageState extends State<ListStatusMobilePage>
-    with AutomaticKeepAliveClientMixin<ListStatusMobilePage> {
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return GetBuilder<ListStatusController>(
-      init: ListStatusController(rootController: widget.rootController),
-      builder: (controller) => Stack(
-        children: [
-          EasyRefresh(
-            header: MaterialHeader(
-                valueColor:
-                    AlwaysStoppedAnimation<Color>(ColorStyle.secondaryColor)),
-            controller: controller.refreshController,
-            onRefresh: controller.onRefresh,
-            child: SingleChildScrollView(
-              physics: ScrollPhysics(),
-              child: Column(
-                children: [
-                  _header(context, controller),
-                  ListView.builder(
-                    physics: ScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: controller.testList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      var item = controller.reqresList[index];
-                      return ListItem(controller, item, index);
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+      init: ListStatusController(rootController: rootController),
+      builder: (controller) => GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          body: (controller.isLoadingStatus || controller.isLoadingListDosen)
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 24.0),
+                      child: SizedBox(
+                        height: 32,
+                        width: 32,
+                        child: Lottie.asset('assets/animations/loader.json',
+                            width: 54, height: 54, frameRate: FrameRate(60)),
+                      ),
+                    ),
+                  ],
+                )
+              : Stack(
+                  children: [
+                    EasyRefresh(
+                      header: MaterialHeader(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              ColorStyle.secondaryColor)),
+                      controller: controller.refreshController,
+                      onRefresh: controller.onRefresh,
+                      child: SingleChildScrollView(
+                        physics: ScrollPhysics(),
+                        child: Column(
+                          children: [
+                            _header(context, controller),
+                            ListView.builder(
+                              physics: ScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: controller.dosenList.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                var item = controller.dosenList[index];
+                                return ListItem(controller, item, index);
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+        ),
       ),
     );
   }

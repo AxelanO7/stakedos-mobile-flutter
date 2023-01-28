@@ -28,8 +28,10 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
                 SvgPicture.asset('assets/illustrations/welcome.svg'),
+                SizedBox(height: 28),
                 Center(
                   child: CustomButton(
+                    height: Get.height * 7.5 / 100,
                     onPressed: () {
                       Get.put(HomeController()).tapStart();
                     },
@@ -42,6 +44,7 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ),
                 ),
+                SizedBox(height: 20)
               ],
             ),
           ),

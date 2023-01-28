@@ -11,19 +11,26 @@ class BaseController extends GetxController with WidgetsBindingObserver {
     update();
   }
 
-  bool _isLoadingResultPTN = false;
-  bool get isLoadingResultPTN => _isLoadingResultPTN;
-  set isLoadingResultPTN(val) {
-    _isLoadingResultPTN = val;
+  bool _isLoadingListDosen = false;
+  bool get isLoadingListDosen => _isLoadingListDosen;
+  set isLoadingListDosen(val) {
+    _isLoadingListDosen = val;
     update();
   }
 
-  bool _isLoadingResultPTK = false;
-  bool get isLoadingResultPTK => _isLoadingResultPTK;
-  set isLoadingResultPTK(val) {
-    _isLoadingResultPTK = val;
-    update();
-  }
+  // bool _isLoadingResultPTN = false;
+  // bool get isLoadingResultPTN => _isLoadingResultPTN;
+  // set isLoadingResultPTN(val) {
+  //   _isLoadingResultPTN = val;
+  //   update();
+  // }
+
+  // bool _isLoadingResultPTK = false;
+  // bool get isLoadingResultPTK => _isLoadingResultPTK;
+  // set isLoadingResultPTK(val) {
+  //   _isLoadingResultPTK = val;
+  //   update();
+  // }
 
   // StudentResult? studentProfilePTNResult;
   // StudentResult? studentProfilePTKResult;

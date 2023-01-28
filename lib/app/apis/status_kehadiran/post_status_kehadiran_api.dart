@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:stakedos/app/core/base_api.dart';
 import 'package:stakedos/app/core/base_import.dart';
 
-class GetStatusKehadiranApi extends BaseApi {
+class PostStatusKehadiranApi extends BaseApi {
   String url =
-      'https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app/testList.json';
+      'https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app/testList/data.json';
 
   Future<ResultApi> request() async {
     if (CoreConfig.getDebuggableConfig("is_debug_mode"))
@@ -14,7 +14,7 @@ class GetStatusKehadiranApi extends BaseApi {
     try {
       // await generateHeader(withToken: true);
 
-      var response = await get(Uri.parse(url));
+      var response = await post(Uri.parse(url));
       // headers: requestHeaders
 
       checkResponse(response);
@@ -26,7 +26,7 @@ class GetStatusKehadiranApi extends BaseApi {
         var responseBody = json.decode(response.body);
         var data = GetStatusKehadiranResponse.fromJson(responseBody);
         responseData.status = true;
-        responseData.listData = data.data;
+        // responseData.listData = data.data;
         responseData.message = data.messages?.first;
       }
     } catch (e) {

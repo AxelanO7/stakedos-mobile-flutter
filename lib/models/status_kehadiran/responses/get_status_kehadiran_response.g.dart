@@ -10,15 +10,15 @@ GetStatusKehadiranResponse _$GetStatusKehadiranResponseFromJson(
         Map<String, dynamic> json) =>
     GetStatusKehadiranResponse()
       ..status = json['status'] as int?
-      ..data = json['data'] == null
-          ? null
-          : StatusKehadiranData.fromJson(json['data'] as Map<String, dynamic>)
-      ..messages = json['messages'] as List<dynamic>?;
+      ..data = (json['data'] as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : StatusKehadiranData.fromJson(e as Map<String, dynamic>))
+          .toList();
 
 Map<String, dynamic> _$GetStatusKehadiranResponseToJson(
         GetStatusKehadiranResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'data': instance.data,
-      'messages': instance.messages,
     };

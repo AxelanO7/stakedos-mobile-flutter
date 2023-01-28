@@ -65,11 +65,9 @@ class ListStatusController extends BaseController {
     isLoadingStatus = true;
     update();
     var result = await GetStatusKehadiranApi().request();
-    // print(result.data);
     if (result.statusCode == 200) {
-      var data = result.listData as List<StatusKehadiranData?>;
       dosenList = [];
-      // print(result.data);
+      var data = result.listData as List<StatusKehadiranData?>;
       data.forEach(
         (element) {
           if (element != null) {
@@ -77,12 +75,9 @@ class ListStatusController extends BaseController {
           }
         },
       );
-      // print(result.data);
       update();
     }
     isLoadingStatus = false;
-    // print(result.listData);
-    // print(result.data);
     update();
   }
 }

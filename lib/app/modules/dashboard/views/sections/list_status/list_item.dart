@@ -3,7 +3,7 @@ import 'package:stakedos/app/modules/dashboard/views/sections/list_status/contro
 
 class ListItem extends StatefulWidget {
   final ListStatusController controller;
-  final TestData? item;
+  final StatusKehadiranData? item;
   final int index;
 
   ListItem(this.controller, this.item, this.index);
@@ -25,14 +25,14 @@ class _ListItemState extends State<ListItem> {
               Container(
                 color: Colors.yellow,
                 width: 32,
-                child: Text('${widget.item?.test2}'),
+                child: Text('${widget.item?.id}'),
               ),
               Container(
                 color: Colors.blueGrey,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 16),
                   child: Text(
-                    '${widget.item?.test}',
+                    '${widget.item?.namaDosen}',
                     style: TypographyStyle.body1SemiBold
                         .copyWith(color: ColorStyle().grayscaleRange[800]),
                   ),
@@ -41,7 +41,7 @@ class _ListItemState extends State<ListItem> {
               Container(
                 color: Colors.orange,
                 child: Text(
-                  '${widget.item?.test3}',
+                  '${widget.item?.statusKehadiran}',
                   textAlign: TextAlign.center,
                   style: TypographyStyle.body1SemiBold
                       .copyWith(color: ColorStyle().grayscaleRange[800]),

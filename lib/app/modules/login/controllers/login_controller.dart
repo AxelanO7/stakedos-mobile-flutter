@@ -1,6 +1,5 @@
+import 'package:stakedos/app/core/base_import.dart';
 import 'package:stakedos/app/routes/app_pages.dart';
-
-import '../../../core/base_import.dart';
 
 class LoginController extends GetxController {
   Map<String, TextFieldController> textFormController = {

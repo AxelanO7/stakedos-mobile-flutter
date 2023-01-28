@@ -1,7 +1,5 @@
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stakedos/app/core/base_import.dart';
-
-import '../controllers/login_controller.dart';
+import 'package:stakedos/app/modules/login/controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
   LoginView({Key? key}) : super(key: key);
