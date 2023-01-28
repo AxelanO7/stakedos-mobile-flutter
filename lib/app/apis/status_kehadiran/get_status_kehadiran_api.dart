@@ -23,7 +23,7 @@ class GetStatusKehadiranApi extends BaseApi {
         var responseBody = json.decode(response.body);
         var data = GetStatusKehadiranResponse.fromJson(responseBody);
         responseData.status = true;
-        responseData.data = data.data;
+        responseData.listData = data.data;
         responseData.message = data.messages?.first;
       }
     } catch (e) {

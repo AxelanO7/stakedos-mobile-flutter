@@ -5,7 +5,7 @@ import 'package:stakedos/app/core/base_import.dart';
 
 class GetTestApi extends BaseApi {
   String url =
-      'https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app/test.json';
+      'https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app/.json';
 
   Future<ResultApi> request() async {
     if (CoreConfig.getDebuggableConfig("is_debug_mode"))
@@ -14,12 +14,14 @@ class GetTestApi extends BaseApi {
     try {
       // await generateHeader(withToken: true);
 
-      var response = await get(
-        Uri.parse(url),
-        // headers: requestHeaders
-      );
+      var response = await get(Uri.parse(url));
+      // headers: requestHeaders
 
       checkResponse(response);
+      print(response);
+      print(response.statusCode);
+      // print(responseData.listData);
+      // print(responseData.data);
 
       responseData.statusCode = response.statusCode;
       if (checkStatus200(response)) {
@@ -27,7 +29,8 @@ class GetTestApi extends BaseApi {
         var data = TestResponse.fromJson(responseBody);
         responseData.status = true;
         responseData.data = data.data;
-        responseData.message = data.messages?.first;
+        // print(responseData.data);
+        // responseData.message = data.messages?.first;
       }
     } catch (e) {
       printError(e);

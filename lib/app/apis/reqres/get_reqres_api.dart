@@ -25,14 +25,14 @@ class GetReqresApi extends BaseApi {
         var responseBody = json.decode(response.body);
         var data = ReqresResponse.fromJson(responseBody);
         responseData.status = true;
-        responseData.lis = data.data;
+        responseData.listData = data.data;
+        // print(responseData.data);
         responseData.message = data.messages?.first;
       }
     } catch (e) {
       printError(e);
     }
     // print(responseData.status);
-    // print(responseData.data);
     // print(responseData.message);
     return responseData;
   }

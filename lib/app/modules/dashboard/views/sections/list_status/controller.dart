@@ -1,5 +1,7 @@
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:stakedos/app/apis/reqres/get_reqres_api.dart';
+import 'package:stakedos/app/apis/status_kehadiran/get_status_kehadiran_api.dart';
+import 'package:stakedos/app/apis/test/get_test_api.dart';
 import 'package:stakedos/app/core/base_import.dart';
 import 'package:stakedos/app/modules/dashboard/controllers/dashboard_controller.dart';
 
@@ -62,20 +64,25 @@ class ListStatusController extends BaseController {
   getDosenListData() async {
     isLoadingStatus = true;
     update();
-    var result = await GetReqresApi().request();
+    var result = await GetStatusKehadiranApi().request();
+    // print(result.data);
     if (result.statusCode == 200) {
-      reqresList = [];
-      var data = result.data as List<ReqresData?>;
+      var data = result.listData as List<StatusKehadiranData?>;
+      dosenList = [];
+      // print(result.data);
       data.forEach(
         (element) {
           if (element != null) {
-            reqresList.add(element);
+            dosenList.add(element);
           }
         },
       );
+      // print(result.data);
       update();
     }
     isLoadingStatus = false;
+    // print(result.listData);
+    // print(result.data);
     update();
   }
 }
