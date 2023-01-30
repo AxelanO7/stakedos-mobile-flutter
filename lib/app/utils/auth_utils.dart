@@ -3,7 +3,6 @@
 import 'dart:convert';
 
 import 'package:firebase_database/firebase_database.dart';
-import 'package:stakedos/app/apis/auth/login_api.dart';
 import 'package:stakedos/app/models/index.dart';
 
 import 'settings_utils.dart';
@@ -56,10 +55,18 @@ class AuthUtils {
     var isLoggedIn = false;
     rawData.forEach((key, value) async {
       UserAccount userData = UserAccount.fromJson(value);
+      print(userIdentifier);
+      print(password);
+      print(userData.username);
+      print(userData.password);
       if (userData.username == userIdentifier &&
           userData.password == password) {
+        print(userData.token);
+        print(userData.id);
         await setMobileToken(userData.token ?? "");
+        // print(_skMobileToken);
         await setUserId(userData.id.toString());
+        // print(_skUserId);
         isLoggedIn = true;
       }
     });
@@ -130,8 +137,11 @@ class AuthUtils {
   }
 
   static Future<bool> setMobileToken(String token) async {
-    setLoggedIn(true);
+    // print(token);
     await SettingsUtils.set(_skMobileToken, token);
+    setLoggedIn(true);
+    // print(_skMobileToken);
+
     return true;
   }
 
@@ -159,7 +169,9 @@ class AuthUtils {
   }
 
   static Future<void> setUserId(String id) async {
+    // print(id);
     await SettingsUtils.set(_skUserId, id);
+    // print(_skUserId);
   }
 
   static Future<String> getUserId() async {
