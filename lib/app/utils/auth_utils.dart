@@ -47,12 +47,6 @@ class AuthUtils {
     await SettingsUtils.remove(_skLogin);
   }
 
-  static doLogout() async {
-    await SettingsUtils.remove(_skMobileToken);
-    await SettingsUtils.remove(_skUserId);
-    await SettingsUtils.remove(_skLogin);
-  }
-
   static doLogin(String userIdentifier, String password) async {
     FirebaseDatabase fDB = FirebaseDatabase.instance;
     DatabaseReference? fAuthRef = fDB.ref('/stakedos/user');
