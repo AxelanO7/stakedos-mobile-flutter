@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "618554579294",
+    "firebase_url": "https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "stakedos-23d7b",
     "storage_bucket": "stakedos-23d7b.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "618554579294-68t5l55ksiuof6emh1m3ks1llrhoaltu.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "618554579294-qcqj6918d0b88nuo6jg5iv1ghi6jhcu8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.stakedos"
+              }
             }
           ]
         }

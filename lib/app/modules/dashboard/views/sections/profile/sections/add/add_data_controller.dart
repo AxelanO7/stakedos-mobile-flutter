@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:stakedos/app/core/base_api.dart';
 import 'package:stakedos/app/core/base_import.dart';
 import 'package:stakedos/app/modules/dashboard/controllers/dashboard_controller.dart';
@@ -102,30 +103,35 @@ class AddDataController extends BaseController {
       String catatan) async {
     int parseNidn = int.parse(nidn);
     try {
-      final response = await post(
-        Uri.parse(urlPost),
-        body: jsonEncode(
-          {
+      // final response = await post(
+      //   Uri.parse(urlPost),
+      //   body: jsonEncode(
+
+        var payload=  {
             "catatan": catatan,
             "id": parseNidn,
             "kehadiran_tempat": kehadiranTempat,
             "nama_dosen": namaDosen,
             "nidn": parseNidn,
             "no_telepon": noTelepon,
-            "password": password,
             "status_kehadiran": statusKehadiran,
-            "tipe_akun": tipeAkun,
-            "token": token,
-          },
-        ),
-      );
+            // "password": password,
+            // "tipe_akun": tipeAkun,
+            // "token": token,
+          };
+          FirebaseDatabase fDB = FirebaseDatabase.instance;
+    DatabaseReference? fAuthRef = fDB.ref('/stakedos/dosen/dosen_${DeviceUtils.getRandomString(8)}');
+    await fAuthRef.set(payload);
+    print("sukses simpan data");
+      //   ),
+      // );
       // print(response.body);
-      print(response.statusCode);
-      if (response.statusCode == 200) {
+      // print(response.statusCode);
+      // if (response.statusCode == 200) {
         return true;
-      } else {
-        return false;
-      }
+      // } else {
+      //   return false;
+      // }
     } catch (e) {
       print(e.toString());
     }

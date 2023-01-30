@@ -27,7 +27,7 @@ class PostStatusKehadiranApi extends BaseApi {
         var data = GetStatusKehadiranResponse.fromJson(responseBody);
         responseData.status = true;
         // responseData.listData = data.data;
-        responseData.message = data.messages?.first;
+        // responseData.message = data.messages?.first;
       }
     } catch (e) {
       printError(e);

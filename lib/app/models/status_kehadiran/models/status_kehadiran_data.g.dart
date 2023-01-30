@@ -14,10 +14,7 @@ StatusKehadiranData _$StatusKehadiranDataFromJson(Map<String, dynamic> json) =>
       ..namaDosen = json['nama_dosen'] as String?
       ..nidn = json['nidn'] as int?
       ..noTelepon = json['no_telepon'] as String?
-      ..password = json['password'] as String?
-      ..statusKehadiran = json['status_kehadiran'] as String?
-      ..tipeAkun = json['tipe_akun'] as String?
-      ..token = json['token'] as String?;
+      ..statusKehadiran = json['status_kehadiran'] as String?;
 
 Map<String, dynamic> _$StatusKehadiranDataToJson(
         StatusKehadiranData instance) =>
@@ -28,8 +25,5 @@ Map<String, dynamic> _$StatusKehadiranDataToJson(
       'nama_dosen': instance.namaDosen,
       'nidn': instance.nidn,
       'no_telepon': instance.noTelepon,
-      'password': instance.password,
       'status_kehadiran': instance.statusKehadiran,
-      'tipe_akun': instance.tipeAkun,
-      'token': instance.token,
     };

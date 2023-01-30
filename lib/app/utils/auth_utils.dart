@@ -1,5 +1,8 @@
 // import 'package:stakedos/app/apis/auth/login_api.dart';
 // import 'package:stakedos/app/apis/auth/login_guest_api.dart';
+import 'dart:convert';
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:stakedos/app/apis/auth/login_api.dart';
 import 'package:stakedos/app/models/index.dart';
 
@@ -38,15 +41,29 @@ class AuthUtils {
   //   }
   // }
 
+  static doLogout() async {
+    await SettingsUtils.remove(_skMobileToken);
+    await SettingsUtils.remove(_skUserId);
+    await SettingsUtils.remove(_skLogin);
+  }
+
   static doLogin(String userIdentifier, String password) async {
-    // var result = await LoginApi()
-    //     .request(emailOrWhatsapp: userIdentifier, password: password);
-    var result;
-    if (userIdentifier == username[0]) {
-      return true;
-    } else {
-      return false;
-    }
+    FirebaseDatabase fDB = FirebaseDatabase.instance;
+    DatabaseReference? fAuthRef = fDB.ref('/stakedos/user');
+    var userAuthData = await fAuthRef.get();
+    var respJson = json.encode(userAuthData.value);
+    Map<String, dynamic> rawData = json.decode(respJson);
+    var isLoggedIn = false;
+    rawData.forEach((key, value) async {
+      UserAccount userData = UserAccount.fromJson(value);
+      if (userData.username == userIdentifier &&
+          userData.password == password) {
+        await setMobileToken(userData.token ?? "");
+        await setUserId(userData.id.toString());
+        isLoggedIn = true;
+      }
+    });
+    return isLoggedIn;
   }
 
   // static doThirdParyLogin(String authType, String authToken) async {

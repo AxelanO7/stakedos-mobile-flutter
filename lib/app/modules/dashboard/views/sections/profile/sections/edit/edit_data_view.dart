@@ -73,13 +73,13 @@ class EditDataSectionView extends StatelessWidget {
                                 ),
                                 Focus(
                                     onFocusChange: (status) {
-                                      controller.textFormController["full_name"]
+                                      controller.textFormController["name"]
                                           ?.onFocus = status;
                                       controller.update();
                                     },
                                     child: CustomTextField(
                                       controller: controller
-                                          .textFormController["full_name"],
+                                          .textFormController["name"],
                                       hintText: "Nama Lengkap",
                                       inputFormatter: [
                                         FilteringTextInputFormatter.deny(RegExp(
@@ -165,22 +165,18 @@ class EditDataSectionView extends StatelessWidget {
                               children: [
                                 Radio(
                                     activeColor: ColorStyle.secondaryColor,
-                                    value: true,
-                                    groupValue: 'kehadiran',
-                                    onChanged: (value) {
-                                      controller.tapKehadiran;
-                                    }),
+                                    value: "Hadir",
+                                    groupValue: controller.hadir,
+                                    onChanged: controller.tapKehadiran),
                                 Text(
                                   "Hadir",
                                   style: TypographyStyle.body4Medium,
                                 ),
                                 Radio(
                                     activeColor: ColorStyle.secondaryColor,
-                                    value: false,
-                                    groupValue: 'kehadiran',
-                                    onChanged: (value) {
-                                      controller.tapKehadiran;
-                                    }),
+                                    value: "Tidak Hadir",
+                                    groupValue: controller.hadir,
+                                    onChanged: controller.tapKehadiran),
                                 Text(
                                   "Tidak Aktif",
                                   style: TypographyStyle.body4Medium,
@@ -191,7 +187,10 @@ class EditDataSectionView extends StatelessWidget {
                               list: ["R301", "R302", "R303"],
                               hintText: 'Pilih Tempat',
                               itemTitle: (val) => val,
-                              onSelected: (v) {},
+                              onSelected: (v) {
+                                controller.choosenAttendPlace = v;
+                                controller.update();
+                              },
                             ),
                             SizedBox(height: 12),
                             Text(
@@ -225,8 +224,8 @@ class EditDataSectionView extends StatelessWidget {
                           height: 32,
                         ),
                         CustomButton(
-                          isLoading: false,
-                          onPressed: () {},
+                          isLoading: controller.isLoadingSave,
+                          onPressed: controller.saveDosenData,
                           color: ColorStyle.secondaryColor,
                           radius: 100,
                           width: Get.width * 88 / 100,

@@ -1,3 +1,7 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:stakedos/app/apis/reqres/get_reqres_api.dart';
 import 'package:stakedos/app/apis/status_kehadiran/get_status_kehadiran_api.dart';
@@ -8,9 +12,13 @@ import 'package:stakedos/app/modules/dashboard/controllers/dashboard_controller.
 class ListStatusController extends BaseController {
   var mainScrollController = ScrollController();
   List<StatusKehadiranData?> dosenList = [];
-  List<TestData?> testList = [];
-  List<ReqresData?> reqresList = [];
+  // List<TestData?> testList = [];
+  // List<ReqresData?> reqresList = [];
   StatusKehadiranData? selectedStatus;
+
+  FirebaseDatabase _fDB = FirebaseDatabase.instance;
+  DatabaseReference? _fDosenStatusRef;
+  StreamSubscription<DatabaseEvent>? _fDosenStatusEvent;
 
   EasyRefreshController refreshController = EasyRefreshController();
 
@@ -18,6 +26,10 @@ class ListStatusController extends BaseController {
 
   bool isLoadingStatus = false;
 
+  @override
+  listData({int? pageTo}) async {
+    getDosenListData();
+  }
   // bool isInit = true;
   // @override
   // void didChangeDependencies() {
@@ -61,20 +73,38 @@ class ListStatusController extends BaseController {
   getDosenListData() async {
     isLoadingStatus = true;
     update();
-    var result = await GetStatusKehadiranApi().request();
-    if (result.statusCode == 200) {
-      dosenList = [];
-      var data = result.data as List<StatusKehadiranData?>;
-      data.forEach(
-        (element) {
-          if (element != null) {
-            dosenList.add(element);
-          }
-        },
-      );
-      update();
-    }
+    _fDosenStatusEvent?.cancel();
+    _fDosenStatusRef = _fDB.ref('/stakedos/dosen');
+    _fDosenStatusEvent =
+        _fDosenStatusRef?.onValue.listen((DatabaseEvent event) async {
+      final data = event.snapshot.value;
+      if (data != null) {
+        var respJson = json.encode(data);
+
+        dosenList = [];
+        Map<String, dynamic> rawData = json.decode(respJson);
+        rawData.forEach((key, value) {
+          var dataRaw = StatusKehadiranData.fromJson(value);
+          dosenList.add(dataRaw);
+        });
+        isLoadingStatus = false;
+        update();
+      }
+    });
     isLoadingStatus = false;
     update();
+    // var result = await GetStatusKehadiranApi().request();
+    // if (result.statusCode == 200) {
+    //   dosenList = [];
+    //   var data = result.data as List<StatusKehadiranData?>;
+    //   data.forEach(
+    //     (element) {
+    //       if (element != null) {
+    //         dosenList.add(element);
+    //       }
+    //     },
+    //   );
+    //   update();
+    // }
   }
 }
