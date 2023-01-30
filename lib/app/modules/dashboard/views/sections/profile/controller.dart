@@ -48,12 +48,10 @@ class ProfileController extends BaseController {
   onGoBackProfile() {
     return Get.back();
   }
-
   @override
   listData({int? pageTo}) async {
     getDosenData();
   }
-
   getDosenData() async {
     //TODO: sesuaikan setelah halaman login terimplementasi
     // String userId = await AuthUtils.getUserId();
@@ -70,10 +68,5 @@ class ProfileController extends BaseController {
         update();
       }
     });
-  }
-
-  void tapLogout() {
-    AuthUtils.doLogout();
-    Get.offAllNamed(Routes.SELECT_ROLE);
   }
 }

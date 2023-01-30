@@ -130,11 +130,8 @@ class AuthUtils {
   }
 
   static Future<bool> setMobileToken(String token) async {
-    // print(token);
-    await SettingsUtils.set(_skMobileToken, token);
     setLoggedIn(true);
-    // print(_skMobileToken);
-
+    await SettingsUtils.set(_skMobileToken, token);
     return true;
   }
 
@@ -162,9 +159,7 @@ class AuthUtils {
   }
 
   static Future<void> setUserId(String id) async {
-    // print(id);
     await SettingsUtils.set(_skUserId, id);
-    // print(_skUserId);
   }
 
   static Future<String> getUserId() async {

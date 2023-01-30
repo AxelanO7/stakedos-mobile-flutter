@@ -25,8 +25,4 @@ class SelectRoleController extends GetxController {
   void tapDosen() {
     Get.toNamed(Routes.LOGIN);
   }
-
-  void tapMahasiswa() {
-    Get.toNamed(Routes.DASHBOARD);
-  }
 }

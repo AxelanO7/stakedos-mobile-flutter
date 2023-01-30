@@ -21,7 +21,7 @@ class HomeController extends GetxController {
   }
 
   void tapStart() {
-    Get.toNamed(Routes.SELECT_ROLE);
+    Get.toNamed(Routes.DASHBOARD);
   }
 
   void increment() => count.value++;
