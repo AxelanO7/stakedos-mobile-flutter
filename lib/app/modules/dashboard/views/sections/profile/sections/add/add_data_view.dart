@@ -1,14 +1,14 @@
 import 'package:stakedos/app/core/base_import.dart';
-import 'package:stakedos/app/modules/dashboard/views/sections/profile/controller.dart';
-import 'package:stakedos/app/modules/dashboard/views/sections/profile/sections/edit/edit_data_controller.dart';
+import 'package:stakedos/app/modules/dashboard/views/sections/profile/sections/add/add_data_controller.dart';
 
-class EditDataSectionView extends StatelessWidget {
-  const EditDataSectionView({super.key});
+class AddDataSectionView extends StatelessWidget {
+  AddDataSectionView({super.key});
+  AddDataController addDataController = AddDataController();
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<EditDataController>(
-      init: EditDataController(),
+    return GetBuilder<AddDataController>(
+      init: AddDataController(),
       builder: (controller) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
@@ -26,7 +26,7 @@ class EditDataSectionView extends StatelessWidget {
               onGoBack: controller.onGoBack,
             ),
             title: Text(
-              "Ubah Data",
+              "Tambah Data",
               style: TypographyStyle.body2SemiBold
                   .copyWith(color: ColorStyle().grayscaleRange[900]),
               textAlign: TextAlign.center,
@@ -68,18 +68,16 @@ class EditDataSectionView extends StatelessWidget {
                                   style: TypographyStyle.body4Medium.copyWith(
                                       color: ColorStyle().grayscaleRange[600]),
                                 ),
-                                SizedBox(
-                                  height: 8,
-                                ),
+                                SizedBox(height: 8),
                                 Focus(
                                     onFocusChange: (status) {
-                                      controller.textFormController["full_name"]
+                                      controller.textFormController["nama"]
                                           ?.onFocus = status;
                                       controller.update();
                                     },
                                     child: CustomTextField(
-                                      controller: controller
-                                          .textFormController["full_name"],
+                                      controller:
+                                          controller.textFormController["nama"],
                                       hintText: "Nama Lengkap",
                                       inputFormatter: [
                                         FilteringTextInputFormatter.deny(RegExp(
@@ -88,9 +86,7 @@ class EditDataSectionView extends StatelessWidget {
                                     )),
                               ],
                             ),
-                            SizedBox(
-                              height: 16,
-                            ),
+                            SizedBox(height: 16),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -99,9 +95,7 @@ class EditDataSectionView extends StatelessWidget {
                                   style: TypographyStyle.body4Medium.copyWith(
                                       color: ColorStyle().grayscaleRange[600]),
                                 ),
-                                SizedBox(
-                                  height: 8,
-                                ),
+                                SizedBox(height: 8),
                                 Focus(
                                     onFocusChange: (status) {
                                       controller.textFormController["nidn"]
@@ -114,14 +108,12 @@ class EditDataSectionView extends StatelessWidget {
                                       hintText: "NIDN",
                                       inputFormatter: [
                                         FilteringTextInputFormatter.deny(RegExp(
-                                            r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                                            r'[a-z_,*()!@#$%^&`~|\\\[\]+=]')),
                                       ],
                                     )),
                               ],
                             ),
-                            SizedBox(
-                              height: 16,
-                            ),
+                            SizedBox(height: 16),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -130,9 +122,7 @@ class EditDataSectionView extends StatelessWidget {
                                   style: TypographyStyle.body4Medium.copyWith(
                                       color: ColorStyle().grayscaleRange[600]),
                                 ),
-                                SizedBox(
-                                  height: 8,
-                                ),
+                                SizedBox(height: 8),
                                 Focus(
                                     onFocusChange: (status) {
                                       controller.textFormController["phone"]
@@ -145,7 +135,7 @@ class EditDataSectionView extends StatelessWidget {
                                       hintText: "No Telepon",
                                       inputFormatter: [
                                         FilteringTextInputFormatter.deny(RegExp(
-                                            r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                                            r'[a-z_,*()!@#$%^&`~|\\\[\]+=]')),
                                       ],
                                     )),
                               ],
@@ -164,12 +154,13 @@ class EditDataSectionView extends StatelessWidget {
                             Row(
                               children: [
                                 Radio(
-                                    activeColor: ColorStyle.secondaryColor,
-                                    value: true,
-                                    groupValue: 'kehadiran',
-                                    onChanged: (value) {
-                                      controller.tapKehadiran;
-                                    }),
+                                  activeColor: ColorStyle.secondaryColor,
+                                  value: true,
+                                  groupValue: "kehadiran",
+                                  onChanged: (value) {
+                                    controller.tapKehadiran;
+                                  },
+                                ),
                                 Text(
                                   "Hadir",
                                   style: TypographyStyle.body4Medium,
@@ -177,7 +168,7 @@ class EditDataSectionView extends StatelessWidget {
                                 Radio(
                                     activeColor: ColorStyle.secondaryColor,
                                     value: false,
-                                    groupValue: 'kehadiran',
+                                    groupValue: "kehadiran",
                                     onChanged: (value) {
                                       controller.tapKehadiran;
                                     }),
@@ -191,7 +182,9 @@ class EditDataSectionView extends StatelessWidget {
                               list: ["R301", "R302", "R303"],
                               hintText: 'Pilih Tempat',
                               itemTitle: (val) => val,
-                              onSelected: (v) {},
+                              onSelected: (v) {
+                                controller.tempatHadir = v;
+                              },
                             ),
                             SizedBox(height: 12),
                             Text(
@@ -199,9 +192,7 @@ class EditDataSectionView extends StatelessWidget {
                               style: TypographyStyle.body4Medium.copyWith(
                                   color: ColorStyle().grayscaleRange[600]),
                             ),
-                            SizedBox(
-                              height: 8,
-                            ),
+                            SizedBox(height: 8),
                             Focus(
                               onFocusChange: (status) {
                                 controller.textFormController["Catatan"]
@@ -221,25 +212,132 @@ class EditDataSectionView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 32,
+                        SizedBox(height: 16),
+                        Text(
+                          "Private",
+                          style: TypographyStyle.body3Bold.copyWith(
+                              color: ColorStyle().grayscaleRange[700]),
                         ),
+                        SizedBox(height: 8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Tipe Akun",
+                              style: TypographyStyle.body4Medium.copyWith(
+                                  color: ColorStyle().grayscaleRange[600]),
+                            ),
+                            SizedBox(height: 8),
+                            Focus(
+                                onFocusChange: (status) {
+                                  controller.textFormController["tipe"]
+                                      ?.onFocus = status;
+                                  controller.update();
+                                },
+                                child: CustomTextField(
+                                  controller:
+                                      controller.textFormController["tipe"],
+                                  hintText: "Tipe Akun",
+                                  inputFormatter: [
+                                    FilteringTextInputFormatter.deny(RegExp(
+                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                                  ],
+                                )),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Token",
+                              style: TypographyStyle.body4Medium.copyWith(
+                                  color: ColorStyle().grayscaleRange[600]),
+                            ),
+                            SizedBox(height: 8),
+                            Focus(
+                                onFocusChange: (status) {
+                                  controller.textFormController["token"]
+                                      ?.onFocus = status;
+                                  controller.update();
+                                },
+                                child: CustomTextField(
+                                  controller:
+                                      controller.textFormController["token"],
+                                  hintText: "Token",
+                                  inputFormatter: [
+                                    FilteringTextInputFormatter.deny(RegExp(
+                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                                  ],
+                                )),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Password",
+                              style: TypographyStyle.body4Medium.copyWith(
+                                  color: ColorStyle().grayscaleRange[600]),
+                            ),
+                            SizedBox(height: 8),
+                            Focus(
+                                onFocusChange: (status) {
+                                  controller.textFormController["password"]
+                                      ?.onFocus = status;
+                                  controller.update();
+                                },
+                                child: CustomTextField(
+                                  controller:
+                                      controller.textFormController["password"],
+                                  hintText: "Password",
+                                  inputFormatter: [
+                                    FilteringTextInputFormatter.deny(RegExp(
+                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                                  ],
+                                )),
+                          ],
+                        ),
+                        SizedBox(height: 32),
                         CustomButton(
-                          isLoading: false,
-                          onPressed: () {},
+                          // isLoading: false,
+                          onPressed: () async {
+                            bool response = await addDataController.postData(
+                              controller
+                                  .textFormController["tipe"]!.controller!.text,
+                              controller.textFormController["token"]!
+                                  .controller!.text,
+                              controller.textFormController["password"]!
+                                  .controller!.text,
+                              controller
+                                  .textFormController["nama"]!.controller!.text,
+                              controller
+                                  .textFormController["nidn"]!.controller!.text,
+                              controller.textFormController["phone"]!
+                                  .controller!.text,
+                              controller.hadir,
+                              controller.tempatHadir,
+                              controller.textFormController["catatan"]!
+                                  .controller!.text,
+                            );
+                            if (response) {
+                              print('berhasil');
+                            } else {
+                              print('tidak berhasil');
+                            }
+                          },
                           color: ColorStyle.secondaryColor,
                           radius: 100,
                           width: Get.width * 88 / 100,
                           child: Text(
-                            'Simpan',
+                            'Tambah',
                             style: TypographyStyle.body1Bold.copyWith(
                               color: ColorStyle.whiteColor,
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 32,
-                        ),
+                        SizedBox(height: 32),
                       ],
                     ),
                   ),

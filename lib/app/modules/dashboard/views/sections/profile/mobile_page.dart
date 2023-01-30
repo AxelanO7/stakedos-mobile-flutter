@@ -128,20 +128,23 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                     ),
                                   ),
                                 ),
-                                CustomButton(
-                                  height: 42,
-                                  width: 46,
-                                  color: ColorStyle.whiteColor,
-                                  shape: BoxShape.circle,
-                                  onPressed: (() {
-                                    controller.onTapEdit();
-                                  }),
-                                  child: SizedBox(
-                                    height: 24,
-                                    width: 24,
-                                    child: SvgPicture.asset(
-                                      'assets/icons/edit.svg',
-                                      color: ColorStyle().grayscaleRange[500],
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: CustomButton(
+                                    height: 42,
+                                    width: 46,
+                                    color: ColorStyle.whiteColor,
+                                    shape: BoxShape.circle,
+                                    onPressed: (() {
+                                      controller.tapEdit;
+                                    }),
+                                    child: SizedBox(
+                                      height: 24,
+                                      width: 24,
+                                      child: SvgPicture.asset(
+                                        'assets/icons/edit.svg',
+                                        color: ColorStyle().grayscaleRange[500],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -186,12 +189,16 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                                       .grayscaleRange[600]),
                                         ),
                                         SizedBox(width: 42),
-                                        Text(
-                                          " : ",
-                                          style: TypographyStyle.body1SemiBold
-                                              .copyWith(
-                                                  color: ColorStyle()
-                                                      .grayscaleRange[600]),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: Text(
+                                            " : ",
+                                            style: TypographyStyle.body1SemiBold
+                                                .copyWith(
+                                                    color: ColorStyle()
+                                                        .grayscaleRange[600]),
+                                          ),
                                         ),
                                         Text(
                                           "Dosen 1",
@@ -216,12 +223,16 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                                       .grayscaleRange[600]),
                                         ),
                                         SizedBox(width: 99),
-                                        Text(
-                                          " : ",
-                                          style: TypographyStyle.body1SemiBold
-                                              .copyWith(
-                                                  color: ColorStyle()
-                                                      .grayscaleRange[600]),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: Text(
+                                            " : ",
+                                            style: TypographyStyle.body1SemiBold
+                                                .copyWith(
+                                                    color: ColorStyle()
+                                                        .grayscaleRange[600]),
+                                          ),
                                         ),
                                         Text(
                                           "19101437",
@@ -246,12 +257,16 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                                       .grayscaleRange[600]),
                                         ),
                                         SizedBox(width: 54),
-                                        Text(
-                                          " : ",
-                                          style: TypographyStyle.body1SemiBold
-                                              .copyWith(
-                                                  color: ColorStyle()
-                                                      .grayscaleRange[600]),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: Text(
+                                            " : ",
+                                            style: TypographyStyle.body1SemiBold
+                                                .copyWith(
+                                                    color: ColorStyle()
+                                                        .grayscaleRange[600]),
+                                          ),
                                         ),
                                         Text(
                                           "082210487700",
@@ -276,12 +291,16 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                                       .grayscaleRange[600]),
                                         ),
                                         SizedBox(width: 10),
-                                        Text(
-                                          " : ",
-                                          style: TypographyStyle.body1SemiBold
-                                              .copyWith(
-                                                  color: ColorStyle()
-                                                      .grayscaleRange[600]),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: Text(
+                                            " : ",
+                                            style: TypographyStyle.body1SemiBold
+                                                .copyWith(
+                                                    color: ColorStyle()
+                                                        .grayscaleRange[600]),
+                                          ),
                                         ),
                                         Text(
                                           "Hadir",
@@ -305,12 +324,16 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                                   color: ColorStyle()
                                                       .grayscaleRange[600]),
                                         ),
-                                        Text(
-                                          " : ",
-                                          style: TypographyStyle.body1SemiBold
-                                              .copyWith(
-                                                  color: ColorStyle()
-                                                      .grayscaleRange[600]),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: Text(
+                                            " : ",
+                                            style: TypographyStyle.body1SemiBold
+                                                .copyWith(
+                                                    color: ColorStyle()
+                                                        .grayscaleRange[600]),
+                                          ),
                                         ),
                                         Text(
                                           "R302",
@@ -338,12 +361,16 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                                       .grayscaleRange[600]),
                                         ),
                                         SizedBox(width: 74),
-                                        Text(
-                                          " : ",
-                                          style: TypographyStyle.body1SemiBold
-                                              .copyWith(
-                                                  color: ColorStyle()
-                                                      .grayscaleRange[600]),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: Text(
+                                            " : ",
+                                            style: TypographyStyle.body1SemiBold
+                                                .copyWith(
+                                                    color: ColorStyle()
+                                                        .grayscaleRange[600]),
+                                          ),
                                         ),
                                         Expanded(
                                           child: Text(
@@ -383,16 +410,16 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                             child: Row(
                               children: [
                                 SvgPicture.asset(
-                                  'assets/icons/edit_status.svg',
+                                  'assets/icons/add.svg',
                                   color: ColorStyle().grayscaleRange[700],
                                   width: 24,
                                 ),
                                 InkWell(
-                                  onTap: controller.onTapEdit,
+                                  onTap: controller.tapAdd,
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 12),
                                     child: Text(
-                                      "Ubah Status Kehadiran",
+                                      "Tambah Status Kehadiran",
                                       style: TypographyStyle.body2SemiBold
                                           .copyWith(
                                               color: ColorStyle()
@@ -418,10 +445,53 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                             ),
                           ),
                           GestureDetector(
+                            onTap: () => controller.tapEdit,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 16, top: 32, right: 16),
+                              child: Row(
+                                children: [
+                                  SvgPicture.asset(
+                                    'assets/icons/edit_status.svg',
+                                    color: ColorStyle().grayscaleRange[700],
+                                    width: 24,
+                                  ),
+                                  InkWell(
+                                    onTap: controller.tapEdit,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 12),
+                                      child: Text(
+                                        "Ubah Status Kehadiran",
+                                        style: TypographyStyle.body2SemiBold
+                                            .copyWith(
+                                                color: ColorStyle()
+                                                    .grayscaleRange[700]),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: SvgPicture.asset(
+                                          'assets/icons/right.svg'),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 52, right: 16),
+                            child: Container(
+                              height: 2,
+                              color: ColorStyle().grayscaleRange[700],
+                            ),
+                          ),
+                          GestureDetector(
                             onTap: controller.tapTentang,
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                  left: 16, top: 36, right: 16),
+                                  left: 16, top: 32, right: 16),
                               child: Row(
                                 children: [
                                   SvgPicture.asset(
@@ -457,7 +527,7 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                             ),
                           ),
                           SizedBox(
-                            height: 52,
+                            height: 44,
                           ),
                           Center(
                             child: CustomButton(
@@ -467,7 +537,7 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                               radius: 100,
                               width: Get.width * 88 / 100,
                               child: Text(
-                                'Simpan',
+                                'Log Out',
                                 style: TypographyStyle.body1Bold.copyWith(
                                   color: ColorStyle.whiteColor,
                                 ),

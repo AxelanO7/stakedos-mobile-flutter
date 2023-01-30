@@ -31,11 +31,15 @@ class ProfileController extends BaseController {
     Get.toNamed(Routes.TENTANG);
   }
 
-  onGoBackProfile() {
-    return Get.back();
+  void tapEdit() {
+    Get.toNamed(Routes.EDIT);
   }
 
-  void onTapEdit() {
-    Get.toNamed(Routes.EDIT);
+  void tapAdd() {
+    Get.toNamed(Routes.ADD);
+  }
+
+  onGoBackProfile() {
+    return Get.back();
   }
 }

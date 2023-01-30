@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:stakedos/app/modules/dashboard/views/sections/profile/sections/add/add_data_view.dart';
 
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
@@ -51,6 +52,10 @@ class AppPages {
     GetPage(
       name: _Paths.EDIT,
       page: () => const EditDataSectionView(),
+    ),
+    GetPage(
+      name: _Paths.ADD,
+      page: () => AddDataSectionView(),
     ),
   ];
 }

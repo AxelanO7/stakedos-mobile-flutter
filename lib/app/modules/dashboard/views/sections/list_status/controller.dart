@@ -7,7 +7,6 @@ import 'package:stakedos/app/modules/dashboard/controllers/dashboard_controller.
 
 class ListStatusController extends BaseController {
   var mainScrollController = ScrollController();
-  final DashboardController rootController;
   List<StatusKehadiranData?> dosenList = [];
   List<TestData?> testList = [];
   List<ReqresData?> reqresList = [];
@@ -18,8 +17,6 @@ class ListStatusController extends BaseController {
   List headerList = ['#', 'Nama Dosen', 'Status'];
 
   bool isLoadingStatus = false;
-
-  ListStatusController({required this.rootController});
 
   // bool isInit = true;
   // @override
@@ -67,7 +64,7 @@ class ListStatusController extends BaseController {
     var result = await GetStatusKehadiranApi().request();
     if (result.statusCode == 200) {
       dosenList = [];
-      var data = result.listData as List<StatusKehadiranData?>;
+      var data = result.data as List<StatusKehadiranData?>;
       data.forEach(
         (element) {
           if (element != null) {

@@ -10,6 +10,7 @@ abstract class Routes {
   static const DASHBOARD = _Paths.DASHBOARD;
   static const TENTANG = _Paths.TENTANG;
   static const EDIT = _Paths.EDIT;
+  static const ADD = _Paths.ADD;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const DASHBOARD = '/dashboard';
   static const TENTANG = '/dashboard/sections/profile/sections';
   static const EDIT = '/dashboard/sections/profile/sections/edit';
+  static const ADD = '/dashboard/sections/profile/sections/add';
 }

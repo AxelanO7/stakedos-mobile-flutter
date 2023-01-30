@@ -25,9 +25,7 @@ class DashboardView extends StatelessWidget {
               scrollBehavior: CustomDisableGlowBehavior(),
               physics: NeverScrollableScrollPhysics(),
               children: [
-                ListStatusMobilePage(
-                  rootController: controller,
-                ),
+                ListStatusMobilePage(),
                 HomePageMobilePage(rootController: controller),
                 ProfileMobilePage(),
               ],

@@ -7,14 +7,12 @@ import 'package:stakedos/app/modules/dashboard/views/sections/list_status/list_i
 import 'controller.dart';
 
 class ListStatusMobilePage extends StatelessWidget {
-  final DashboardController rootController;
-  const ListStatusMobilePage({Key? key, required this.rootController})
-      : super(key: key);
+  const ListStatusMobilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ListStatusController>(
-      init: ListStatusController(rootController: rootController),
+      init: ListStatusController(),
       builder: (controller) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
