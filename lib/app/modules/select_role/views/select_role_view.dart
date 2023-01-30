@@ -73,7 +73,9 @@ class SelectRoleView extends GetView<SelectRoleController> {
               padding: const EdgeInsets.only(top: 36),
               child: Center(
                 child: CustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.tapMahasiswa();
+                  },
                   color: ColorStyle.secondaryColor,
                   child: Text(
                     "Mahasiswa",

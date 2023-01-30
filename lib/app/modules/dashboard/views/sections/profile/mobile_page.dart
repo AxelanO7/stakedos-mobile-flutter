@@ -374,7 +374,7 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                         ),
                                         Expanded(
                                           child: Text(
-                                          "${controller.profileData?.catatan}",
+                                            "${controller.profileData?.catatan}",
                                             style: TypographyStyle.body1SemiBold
                                                 .copyWith(
                                                     color: ColorStyle()
