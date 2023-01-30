@@ -201,7 +201,7 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                           ),
                                         ),
                                         Text(
-                                          "Dosen 1",
+                                          "${controller.profileData?.namaDosen}",
                                           style: TypographyStyle.body1SemiBold
                                               .copyWith(
                                                   color: ColorStyle()
@@ -235,7 +235,7 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                           ),
                                         ),
                                         Text(
-                                          "19101437",
+                                          "${controller.profileData?.nidn}",
                                           style: TypographyStyle.body1SemiBold
                                               .copyWith(
                                                   color: ColorStyle()
@@ -269,7 +269,7 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                           ),
                                         ),
                                         Text(
-                                          "082210487700",
+                                          "${controller.profileData?.noTelepon}",
                                           style: TypographyStyle.body1SemiBold
                                               .copyWith(
                                                   color: ColorStyle()
@@ -303,7 +303,7 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                           ),
                                         ),
                                         Text(
-                                          "Hadir",
+                                          "${controller.profileData?.statusKehadiran}",
                                           style: TypographyStyle.body1SemiBold
                                               .copyWith(
                                                   color: ColorStyle()
@@ -336,7 +336,7 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                           ),
                                         ),
                                         Text(
-                                          "R302",
+                                          "${controller.profileData?.kehadiranTempat}",
                                           style: TypographyStyle.body1SemiBold
                                               .copyWith(
                                                   color: ColorStyle()
@@ -374,7 +374,7 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                         ),
                                         Expanded(
                                           child: Text(
-                                            "Saya dikampus hingga pukul 17.00",
+                                          "${controller.profileData?.catatan}",
                                             style: TypographyStyle.body1SemiBold
                                                 .copyWith(
                                                     color: ColorStyle()

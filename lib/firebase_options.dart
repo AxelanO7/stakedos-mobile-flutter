@@ -54,6 +54,7 @@ class DefaultFirebaseOptions {
     appId: '1:618554579294:android:02ecf5876f17a65b5197cf',
     messagingSenderId: '618554579294',
     projectId: 'stakedos-23d7b',
+    databaseURL: 'https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'stakedos-23d7b.appspot.com',
   );
 
@@ -62,6 +63,7 @@ class DefaultFirebaseOptions {
     appId: '1:618554579294:ios:c8f34b29ef09dd125197cf',
     messagingSenderId: '618554579294',
     projectId: 'stakedos-23d7b',
+    databaseURL: 'https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'stakedos-23d7b.appspot.com',
     iosClientId: '618554579294-qcqj6918d0b88nuo6jg5iv1ghi6jhcu8.apps.googleusercontent.com',
     iosBundleId: 'com.example.stakedos',
