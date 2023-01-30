@@ -17,5 +17,5 @@ export 'status_kehadiran/models/status_kehadiran_data.dart';
 export 'status_kehadiran/responses/get_status_kehadiran_response.dart';
 export 'test/models/test_data.dart';
 export 'test/responses/test_response.dart';
-export 'user/responses/get_users_esponse.dart';
+export 'user/responses/get_users_response.dart';
 export 'user/models/user_account.dart';
