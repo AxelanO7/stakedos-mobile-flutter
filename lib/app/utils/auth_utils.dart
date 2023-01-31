@@ -56,10 +56,18 @@ class AuthUtils {
     var isLoggedIn = false;
     rawData.forEach((key, value) async {
       UserAccount userData = UserAccount.fromJson(value);
+      // print(userIdentifier);
+      // print(password);
+      // print(userData.username);
+      // print(userData.password);
       if (userData.username == userIdentifier &&
           userData.password == password) {
+        print(userData.token);
+        print(userData.id);
         await setMobileToken(userData.token ?? "");
         await setUserId(userData.id.toString());
+        // print(_skMobileToken);
+        // print(_skUserId);
         isLoggedIn = true;
       }
     });

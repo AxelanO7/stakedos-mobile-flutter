@@ -1,6 +1,5 @@
 import 'package:lottie/lottie.dart';
 import 'package:stakedos/app/core/base_import.dart';
-import 'package:stakedos/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:stakedos/app/modules/dashboard/views/sections/list_status/list_item.dart';
 
@@ -50,7 +49,14 @@ class ListStatusMobilePage extends StatelessWidget {
                               itemCount: controller.dosenList.length,
                               itemBuilder: (BuildContext context, int index) {
                                 var item = controller.dosenList[index];
-                                return ListItem(controller, item, index);
+                                return ListItem(
+                                  () => controller.tapItem(
+                                    controller.dosenList[index],
+                                  ),
+                                  controller,
+                                  item,
+                                  index,
+                                );
                               },
                             ),
                           ],
@@ -91,29 +97,32 @@ class ListStatusMobilePage extends StatelessWidget {
           padding: const EdgeInsets.only(left: 16, right: 16, top: 4),
           child: Row(
             children: [
-              Container(
-                color: Colors.red,
-                width: 32,
-                child: Text(
-                  '#',
-                  style: TypographyStyle.body1SemiBold.copyWith(
-                    color: ColorStyle().grayscaleRange[800],
+              // Container(
+              //   color: Colors.red,
+              //   width: 40,
+              //   child: Text(
+              //     '#',
+              //     style: TypographyStyle.body1SemiBold.copyWith(
+              //       color: ColorStyle().grayscaleRange[800],
+              //     ),
+              //     textAlign: TextAlign.center,
+              //   ),
+              // ),
+              Expanded(
+                child: Container(
+                  color: Colors.blue,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: Text(
+                      'Nama Dosen',
+                      style: TypographyStyle.body1SemiBold
+                          .copyWith(color: ColorStyle().grayscaleRange[800]),
+                    ),
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
               Container(
-                color: Colors.blue,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 16),
-                  child: Text(
-                    'Nama Dosen',
-                    style: TypographyStyle.body1SemiBold
-                        .copyWith(color: ColorStyle().grayscaleRange[800]),
-                  ),
-                ),
-              ),
-              Container(
+                width: 100,
                 color: Colors.green,
                 child: Text(
                   'Status',

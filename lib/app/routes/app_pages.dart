@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+import 'package:stakedos/app/modules/dashboard/views/sections/list_status/detail/detail.dart';
 import 'package:stakedos/app/modules/dashboard/views/sections/profile/sections/add/add_data_view.dart';
+import 'package:stakedos/app/providers/list_dosen.dart';
 
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
@@ -57,5 +59,9 @@ class AppPages {
       name: _Paths.ADD,
       page: () => AddDataSectionView(),
     ),
+    // GetPage(
+    //   name: _Paths.DETAIL,
+    //   page: () => DetailPage(),
+    // ),
   ];
 }

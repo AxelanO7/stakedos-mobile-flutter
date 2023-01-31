@@ -212,93 +212,93 @@ class AddDataSectionView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 16),
-                        Text(
-                          "Private",
-                          style: TypographyStyle.body3Bold.copyWith(
-                              color: ColorStyle().grayscaleRange[700]),
-                        ),
-                        SizedBox(height: 8),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Tipe Akun",
-                              style: TypographyStyle.body4Medium.copyWith(
-                                  color: ColorStyle().grayscaleRange[600]),
-                            ),
-                            SizedBox(height: 8),
-                            Focus(
-                                onFocusChange: (status) {
-                                  controller.textFormController["tipe"]
-                                      ?.onFocus = status;
-                                  controller.update();
-                                },
-                                child: CustomTextField(
-                                  controller:
-                                      controller.textFormController["tipe"],
-                                  hintText: "Tipe Akun",
-                                  inputFormatter: [
-                                    FilteringTextInputFormatter.deny(RegExp(
-                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
-                                  ],
-                                )),
-                          ],
-                        ),
-                        SizedBox(height: 16),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Token",
-                              style: TypographyStyle.body4Medium.copyWith(
-                                  color: ColorStyle().grayscaleRange[600]),
-                            ),
-                            SizedBox(height: 8),
-                            Focus(
-                                onFocusChange: (status) {
-                                  controller.textFormController["token"]
-                                      ?.onFocus = status;
-                                  controller.update();
-                                },
-                                child: CustomTextField(
-                                  controller:
-                                      controller.textFormController["token"],
-                                  hintText: "Token",
-                                  inputFormatter: [
-                                    FilteringTextInputFormatter.deny(RegExp(
-                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
-                                  ],
-                                )),
-                          ],
-                        ),
-                        SizedBox(height: 16),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Password",
-                              style: TypographyStyle.body4Medium.copyWith(
-                                  color: ColorStyle().grayscaleRange[600]),
-                            ),
-                            SizedBox(height: 8),
-                            Focus(
-                                onFocusChange: (status) {
-                                  controller.textFormController["password"]
-                                      ?.onFocus = status;
-                                  controller.update();
-                                },
-                                child: CustomTextField(
-                                  controller:
-                                      controller.textFormController["password"],
-                                  hintText: "Password",
-                                  inputFormatter: [
-                                    FilteringTextInputFormatter.deny(RegExp(
-                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
-                                  ],
-                                )),
-                          ],
-                        ),
+                        // SizedBox(height: 16),
+                        // Text(
+                        //   "Private",
+                        //   style: TypographyStyle.body3Bold.copyWith(
+                        //       color: ColorStyle().grayscaleRange[700]),
+                        // ),
+                        // SizedBox(height: 8),
+                        // Column(
+                        //   crossAxisAlignment: CrossAxisAlignment.start,
+                        //   children: [
+                        //     Text(
+                        //       "Tipe Akun",
+                        //       style: TypographyStyle.body4Medium.copyWith(
+                        //           color: ColorStyle().grayscaleRange[600]),
+                        //     ),
+                        //     SizedBox(height: 8),
+                        //     Focus(
+                        //         onFocusChange: (status) {
+                        //           controller.textFormController["tipe"]
+                        //               ?.onFocus = status;
+                        //           controller.update();
+                        //         },
+                        //         child: CustomTextField(
+                        //           controller:
+                        //               controller.textFormController["tipe"],
+                        //           hintText: "Tipe Akun",
+                        //           inputFormatter: [
+                        //             FilteringTextInputFormatter.deny(RegExp(
+                        //                 r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                        //           ],
+                        //         )),
+                        //   ],
+                        // ),
+                        // SizedBox(height: 16),
+                        // Column(
+                        //   crossAxisAlignment: CrossAxisAlignment.start,
+                        //   children: [
+                        //     Text(
+                        //       "Token",
+                        //       style: TypographyStyle.body4Medium.copyWith(
+                        //           color: ColorStyle().grayscaleRange[600]),
+                        //     ),
+                        //     SizedBox(height: 8),
+                        //     Focus(
+                        //         onFocusChange: (status) {
+                        //           controller.textFormController["token"]
+                        //               ?.onFocus = status;
+                        //           controller.update();
+                        //         },
+                        //         child: CustomTextField(
+                        //           controller:
+                        //               controller.textFormController["token"],
+                        //           hintText: "Token",
+                        //           inputFormatter: [
+                        //             FilteringTextInputFormatter.deny(RegExp(
+                        //                 r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                        //           ],
+                        //         )),
+                        //   ],
+                        // ),
+                        // SizedBox(height: 16),
+                        // Column(
+                        //   crossAxisAlignment: CrossAxisAlignment.start,
+                        //   children: [
+                        //     Text(
+                        //       "Password",
+                        //       style: TypographyStyle.body4Medium.copyWith(
+                        //           color: ColorStyle().grayscaleRange[600]),
+                        //     ),
+                        //     SizedBox(height: 8),
+                        //     Focus(
+                        //         onFocusChange: (status) {
+                        //           controller.textFormController["password"]
+                        //               ?.onFocus = status;
+                        //           controller.update();
+                        //         },
+                        //         child: CustomTextField(
+                        //           controller:
+                        //               controller.textFormController["password"],
+                        //           hintText: "Password",
+                        //           inputFormatter: [
+                        //             FilteringTextInputFormatter.deny(RegExp(
+                        //                 r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                        //           ],
+                        //         )),
+                        //   ],
+                        // ),
                         SizedBox(height: 32),
                         CustomButton(
                           // isLoading: false,
@@ -322,9 +322,13 @@ class AddDataSectionView extends StatelessWidget {
                                   .controller!.text,
                             );
                             if (response) {
-                              print('berhasil');
+                              ScaffoldMessenger(
+                                child: Text("Data Berhasil Ditambah"),
+                              );
                             } else {
-                              print('tidak berhasil');
+                              ScaffoldMessenger(
+                                child: Text("Data Gagal Ditambah"),
+                              );
                             }
                           },
                           color: ColorStyle.secondaryColor,

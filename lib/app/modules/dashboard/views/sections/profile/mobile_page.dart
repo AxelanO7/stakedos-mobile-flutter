@@ -374,7 +374,7 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                                         ),
                                         Expanded(
                                           child: Text(
-                                          "${controller.profileData?.catatan}",
+                                            "${controller.profileData?.catatan}",
                                             style: TypographyStyle.body1SemiBold
                                                 .copyWith(
                                                     color: ColorStyle()
@@ -532,7 +532,9 @@ class _ProfileMobilePageState extends State<ProfileMobilePage>
                           Center(
                             child: CustomButton(
                               isLoading: false,
-                              onPressed: () {},
+                              onPressed: () {
+                                controller.tapLogout();
+                              },
                               color: ColorStyle.secondaryColor,
                               radius: 100,
                               width: Get.width * 88 / 100,
