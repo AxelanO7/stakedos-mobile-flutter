@@ -8,6 +8,8 @@ import 'package:stakedos/app/apis/status_kehadiran/get_status_kehadiran_api.dart
 import 'package:stakedos/app/apis/test/get_test_api.dart';
 import 'package:stakedos/app/core/base_import.dart';
 import 'package:stakedos/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:stakedos/app/modules/dashboard/views/sections/list_status/detail/detail.dart';
+import 'package:stakedos/app/routes/app_pages.dart';
 
 class ListStatusController extends BaseController {
   var mainScrollController = ScrollController();
@@ -106,5 +108,10 @@ class ListStatusController extends BaseController {
     //   );
     //   update();
     // }
+  }
+
+  tapItem(StatusKehadiranData? dosenList) async {
+    // Get.toNamed(Routes.DETAIL);
+    DetailPage(dosenList);
   }
 }
