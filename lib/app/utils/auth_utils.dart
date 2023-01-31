@@ -62,8 +62,8 @@ class AuthUtils {
       // print(userData.password);
       if (userData.username == userIdentifier &&
           userData.password == password) {
-        print(userData.token);
-        print(userData.id);
+        // print(userData.token);
+        // print(userData.id);
         await setMobileToken(userData.token ?? "");
         await setUserId(userData.id.toString());
         // print(_skMobileToken);
@@ -138,6 +138,7 @@ class AuthUtils {
   }
 
   static Future<bool> setMobileToken(String token) async {
+    print(token);
     setLoggedIn(true);
     await SettingsUtils.set(_skMobileToken, token);
     return true;
@@ -167,6 +168,7 @@ class AuthUtils {
   }
 
   static Future<void> setUserId(String id) async {
+    print(id);
     await SettingsUtils.set(_skUserId, id);
   }
 
