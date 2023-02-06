@@ -64,7 +64,8 @@ class SelectRoleView extends GetView<SelectRoleController> {
                   color: ColorStyle.whiteColor,
                   child: Text(
                     "Dosen",
-                    style: TypographyStyle.body2Medium,
+                    style: TypographyStyle.body2Medium
+                        .copyWith(color: Colors.grey),
                   ),
                 ),
               ),

@@ -1,11 +1,17 @@
 import 'package:stakedos/app/core/base_import.dart';
 import 'package:stakedos/app/modules/dashboard/observer/ui_observer.dart';
+import 'package:stakedos/app/modules/login/controllers/login_controller.dart';
 import 'package:stakedos/app/routes/app_pages.dart';
 
 class DashboardController extends GetxController {
   static int indexTab = 0;
   static bool onFab = false;
+  static String nidnId = LoginController.nidnId;
   static PageController pageController = PageController(initialPage: 1);
+  // List<Login> loginData = [];
+  // Login? choosenUser;
+
+  int nidn = 0;
 
   final count = 0.obs;
   @override
@@ -17,6 +23,7 @@ class DashboardController extends GetxController {
 
   @override
   void onReady() {
+    // print(nidnId);
     super.onReady();
   }
 

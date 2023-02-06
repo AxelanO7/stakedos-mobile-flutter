@@ -1,6 +1,5 @@
 import 'package:stakedos/app/core/base_import.dart';
-import 'package:stakedos/app/modules/dashboard/views/sections/profile/controller.dart';
-import 'package:stakedos/app/modules/dashboard/views/sections/profile/sections/edit/edit_data_controller.dart';
+import 'package:stakedos/app/modules/dashboard/views/sections/profile/sections/edit_data/edit_data_controller.dart';
 
 class EditDataSectionView extends StatelessWidget {
   const EditDataSectionView({super.key});
@@ -68,9 +67,7 @@ class EditDataSectionView extends StatelessWidget {
                                   style: TypographyStyle.body4Medium.copyWith(
                                       color: ColorStyle().grayscaleRange[600]),
                                 ),
-                                SizedBox(
-                                  height: 8,
-                                ),
+                                SizedBox(height: 8),
                                 Focus(
                                     onFocusChange: (status) {
                                       controller.textFormController["name"]
@@ -78,8 +75,8 @@ class EditDataSectionView extends StatelessWidget {
                                       controller.update();
                                     },
                                     child: CustomTextField(
-                                      controller: controller
-                                          .textFormController["name"],
+                                      controller:
+                                          controller.textFormController["name"],
                                       hintText: "Nama Lengkap",
                                       inputFormatter: [
                                         FilteringTextInputFormatter.deny(RegExp(
@@ -220,9 +217,94 @@ class EditDataSectionView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 32,
+                        SizedBox(height: 20),
+                        Text(
+                          "Private",
+                          style: TypographyStyle.body3Bold.copyWith(
+                              color: ColorStyle().grayscaleRange[700]),
                         ),
+                        SizedBox(height: 8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Tipe Akun",
+                              style: TypographyStyle.body4Medium.copyWith(
+                                  color: ColorStyle().grayscaleRange[600]),
+                            ),
+                            SizedBox(height: 8),
+                            Focus(
+                                onFocusChange: (status) {
+                                  controller.textFormController["tipe"]
+                                      ?.onFocus = status;
+                                  controller.update();
+                                },
+                                child: CustomTextField(
+                                  controller:
+                                      controller.textFormController["tipe"],
+                                  hintText: "Tipe Akun",
+                                  inputFormatter: [
+                                    FilteringTextInputFormatter.deny(RegExp(
+                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                                  ],
+                                )),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Username",
+                              style: TypographyStyle.body4Medium.copyWith(
+                                  color: ColorStyle().grayscaleRange[600]),
+                            ),
+                            SizedBox(height: 8),
+                            Focus(
+                                onFocusChange: (status) {
+                                  controller.textFormController["username"]
+                                      ?.onFocus = status;
+                                  controller.update();
+                                },
+                                child: CustomTextField(
+                                  controller:
+                                      controller.textFormController["username"],
+                                  hintText: "Username",
+                                  inputFormatter: [
+                                    FilteringTextInputFormatter.deny(RegExp(
+                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                                  ],
+                                )),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Password",
+                              style: TypographyStyle.body4Medium.copyWith(
+                                  color: ColorStyle().grayscaleRange[600]),
+                            ),
+                            SizedBox(height: 8),
+                            Focus(
+                                onFocusChange: (status) {
+                                  controller.textFormController["password"]
+                                      ?.onFocus = status;
+                                  controller.update();
+                                },
+                                child: CustomTextField(
+                                  controller:
+                                      controller.textFormController["password"],
+                                  hintText: "Password",
+                                  inputFormatter: [
+                                    FilteringTextInputFormatter.deny(RegExp(
+                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                                  ],
+                                )),
+                          ],
+                        ),
+                        SizedBox(height: 32),
                         CustomButton(
                           isLoading: controller.isLoadingSave,
                           onPressed: controller.saveDosenData,

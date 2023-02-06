@@ -1,11 +1,7 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:stakedos/app/core/base_api.dart';
 import 'package:stakedos/app/core/base_import.dart';
-import 'package:stakedos/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:stakedos/app/modules/dashboard/views/sections/list_status/controller.dart';
-import 'package:stakedos/app/providers/list_dosen.dart';
+import 'package:stakedos/app/modules/dashboard/views/sections/profile/controller.dart';
 // import 'package:stakedos/app/pages/get_started/avatar/pick/sections/choose_avatar_prebuilt_section.dart';
 
 class AddDataController extends BaseController {
@@ -14,10 +10,10 @@ class AddDataController extends BaseController {
   String hadir = "Tidak Hadir";
   String tempatHadir = "Ruangan Dosen";
 
-  String urlPost =
-      'https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app/testList/data.json';
-  String testPost =
-      'https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app/test/data.json';
+  // String urlPost =
+  //     'https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app/testList/data.json';
+  // String testPost =
+  //     'https://stakedos-23d7b-default-rtdb.asia-southeast1.firebasedatabase.app/test/data.json';
   // String dropdownValue = 'Ruang Dosen';
   // String schoolCategory = "";
 
@@ -26,7 +22,7 @@ class AddDataController extends BaseController {
 
   Map<String, TextFieldController> textFormController = {
     "nama": TextFieldController(
-        controller: TextEditingController(text: "test"), onFocus: false),
+        controller: TextEditingController(), onFocus: false),
     "nidn": TextFieldController(
         controller: TextEditingController(),
         onFocus: false,
@@ -37,10 +33,12 @@ class AddDataController extends BaseController {
         isNumberOnly: true),
     "catatan": TextFieldController(
         controller: TextEditingController(), onFocus: false),
+    "username": TextFieldController(
+        controller: TextEditingController(), onFocus: false),
     "tipe": TextFieldController(
         controller: TextEditingController(), onFocus: false),
-    "token": TextFieldController(
-        controller: TextEditingController(), onFocus: false),
+    // "token": TextFieldController(
+    //     controller: TextEditingController(), onFocus: false),
     "password": TextFieldController(
         controller: TextEditingController(), onFocus: false),
   };
@@ -75,12 +73,9 @@ class AddDataController extends BaseController {
     return Get.back();
   }
 
-  void tapKehadiran(bool value) {
-    value == true
-        ? hadir = 'Hadir'
-        : value == false
-            ? hadir = 'Tidak Hadir'
-            : value = value;
+  void tapKehadiran(Object? value) {
+    hadir = value.toString();
+    update();
   }
 
   onTapImage() async {}
@@ -92,9 +87,9 @@ class AddDataController extends BaseController {
   // }
 
   Future postData(
-      String tipeAkun,
-      String token,
-      String password,
+      // String tipeAkun,
+      // String token,
+      // String password,
       String namaDosen,
       String nidn,
       String noTelepon,
@@ -107,28 +102,81 @@ class AddDataController extends BaseController {
       //   Uri.parse(urlPost),
       //   body: jsonEncode(
 
-        var payload=  {
-            "catatan": catatan,
-            "id": parseNidn,
-            "kehadiran_tempat": kehadiranTempat,
-            "nama_dosen": namaDosen,
-            "nidn": parseNidn,
-            "no_telepon": noTelepon,
-            "status_kehadiran": statusKehadiran,
-            // "password": password,
-            // "tipe_akun": tipeAkun,
-            // "token": token,
-          };
-          FirebaseDatabase fDB = FirebaseDatabase.instance;
-    DatabaseReference? fAuthRef = fDB.ref('/stakedos/dosen/dosen_${DeviceUtils.getRandomString(8)}');
-    await fAuthRef.set(payload);
-    print("sukses simpan data");
+      var payload = {
+        "catatan": catatan,
+        "id": parseNidn,
+        "kehadiran_tempat": kehadiranTempat,
+        "nama_dosen": namaDosen,
+        "nidn": parseNidn,
+        "no_telepon": noTelepon,
+        "status_kehadiran": statusKehadiran,
+        // "password": password,
+        // "tipe_akun": tipeAkun,
+        // "token": token,
+      };
+      FirebaseDatabase fDB = FirebaseDatabase.instance;
+      DatabaseReference? fAuthRef =
+          fDB.ref('/stakedos/dosen/dosen_${DeviceUtils.getRandomString(8)}');
+      await fAuthRef.set(payload);
+      print("sukses simpan data dosen");
       //   ),
       // );
       // print(response.body);
       // print(response.statusCode);
       // if (response.statusCode == 200) {
-        return true;
+      return true;
+      // } else {
+      //   return false;
+      // }
+    } catch (e) {
+      print(e.toString());
+    }
+    update();
+  }
+
+  Future postDataUser(
+    String tipeAkun,
+    String token,
+    String username,
+    String password,
+    String nidn,
+    // String namaDosen,
+    // String noTelepon,
+    // String statusKehadiran,
+    // String kehadiranTempat,
+    // String catatan
+  ) async {
+    int parseNidn = int.parse(nidn);
+    try {
+      // final response = await post(
+      //   Uri.parse(urlPost),
+      //   body: jsonEncode(
+
+      var payload = {
+        // "catatan": catatan,
+        // "id": parseNidn,
+        // "kehadiran_tempat": kehadiranTempat,
+        // "nama_dosen": namaDosen,
+        // "nidn": parseNidn,
+        // "no_telepon": noTelepon,
+        // "status_kehadiran": statusKehadiran,
+        "id": parseNidn,
+        "password": password,
+        "tipe_akun": tipeAkun,
+        "token": token,
+        "username": username,
+      };
+      FirebaseDatabase fDB = FirebaseDatabase.instance;
+      DatabaseReference? fAuthRef =
+          fDB.ref('/stakedos/user/user_${DeviceUtils.getRandomString(8)}');
+      await fAuthRef.set(payload);
+      print("sukses simpan data user");
+      //   ),
+      // );
+      // print(response.body);
+      // print(response.statusCode);
+      // if (response.statusCode == 200) {
+      return true;
       // } else {
       //   return false;
       // }

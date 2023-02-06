@@ -1,3 +1,4 @@
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stakedos/app/core/base_import.dart';
 import 'package:stakedos/app/modules/dashboard/views/sections/profile/sections/add/add_data_controller.dart';
 
@@ -154,24 +155,19 @@ class AddDataSectionView extends StatelessWidget {
                             Row(
                               children: [
                                 Radio(
-                                  activeColor: ColorStyle.secondaryColor,
-                                  value: true,
-                                  groupValue: "kehadiran",
-                                  onChanged: (value) {
-                                    controller.tapKehadiran;
-                                  },
-                                ),
+                                    activeColor: ColorStyle.secondaryColor,
+                                    value: "Hadir",
+                                    groupValue: controller.hadir,
+                                    onChanged: controller.tapKehadiran),
                                 Text(
                                   "Hadir",
                                   style: TypographyStyle.body4Medium,
                                 ),
                                 Radio(
                                     activeColor: ColorStyle.secondaryColor,
-                                    value: false,
-                                    groupValue: "kehadiran",
-                                    onChanged: (value) {
-                                      controller.tapKehadiran;
-                                    }),
+                                    value: "Tidak Hadir",
+                                    groupValue: controller.hadir,
+                                    onChanged: controller.tapKehadiran),
                                 Text(
                                   "Tidak Aktif",
                                   style: TypographyStyle.body4Medium,
@@ -212,104 +208,98 @@ class AddDataSectionView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        // SizedBox(height: 16),
-                        // Text(
-                        //   "Private",
-                        //   style: TypographyStyle.body3Bold.copyWith(
-                        //       color: ColorStyle().grayscaleRange[700]),
-                        // ),
-                        // SizedBox(height: 8),
-                        // Column(
-                        //   crossAxisAlignment: CrossAxisAlignment.start,
-                        //   children: [
-                        //     Text(
-                        //       "Tipe Akun",
-                        //       style: TypographyStyle.body4Medium.copyWith(
-                        //           color: ColorStyle().grayscaleRange[600]),
-                        //     ),
-                        //     SizedBox(height: 8),
-                        //     Focus(
-                        //         onFocusChange: (status) {
-                        //           controller.textFormController["tipe"]
-                        //               ?.onFocus = status;
-                        //           controller.update();
-                        //         },
-                        //         child: CustomTextField(
-                        //           controller:
-                        //               controller.textFormController["tipe"],
-                        //           hintText: "Tipe Akun",
-                        //           inputFormatter: [
-                        //             FilteringTextInputFormatter.deny(RegExp(
-                        //                 r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
-                        //           ],
-                        //         )),
-                        //   ],
-                        // ),
-                        // SizedBox(height: 16),
-                        // Column(
-                        //   crossAxisAlignment: CrossAxisAlignment.start,
-                        //   children: [
-                        //     Text(
-                        //       "Token",
-                        //       style: TypographyStyle.body4Medium.copyWith(
-                        //           color: ColorStyle().grayscaleRange[600]),
-                        //     ),
-                        //     SizedBox(height: 8),
-                        //     Focus(
-                        //         onFocusChange: (status) {
-                        //           controller.textFormController["token"]
-                        //               ?.onFocus = status;
-                        //           controller.update();
-                        //         },
-                        //         child: CustomTextField(
-                        //           controller:
-                        //               controller.textFormController["token"],
-                        //           hintText: "Token",
-                        //           inputFormatter: [
-                        //             FilteringTextInputFormatter.deny(RegExp(
-                        //                 r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
-                        //           ],
-                        //         )),
-                        //   ],
-                        // ),
-                        // SizedBox(height: 16),
-                        // Column(
-                        //   crossAxisAlignment: CrossAxisAlignment.start,
-                        //   children: [
-                        //     Text(
-                        //       "Password",
-                        //       style: TypographyStyle.body4Medium.copyWith(
-                        //           color: ColorStyle().grayscaleRange[600]),
-                        //     ),
-                        //     SizedBox(height: 8),
-                        //     Focus(
-                        //         onFocusChange: (status) {
-                        //           controller.textFormController["password"]
-                        //               ?.onFocus = status;
-                        //           controller.update();
-                        //         },
-                        //         child: CustomTextField(
-                        //           controller:
-                        //               controller.textFormController["password"],
-                        //           hintText: "Password",
-                        //           inputFormatter: [
-                        //             FilteringTextInputFormatter.deny(RegExp(
-                        //                 r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
-                        //           ],
-                        //         )),
-                        //   ],
-                        // ),
+                        SizedBox(height: 16),
+                        Text(
+                          "Private",
+                          style: TypographyStyle.body3Bold.copyWith(
+                              color: ColorStyle().grayscaleRange[700]),
+                        ),
+                        SizedBox(height: 8),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Tipe Akun",
+                              style: TypographyStyle.body4Medium.copyWith(
+                                  color: ColorStyle().grayscaleRange[600]),
+                            ),
+                            SizedBox(height: 8),
+                            Focus(
+                                onFocusChange: (status) {
+                                  controller.textFormController["tipe"]
+                                      ?.onFocus = status;
+                                  controller.update();
+                                },
+                                child: CustomTextField(
+                                  controller:
+                                      controller.textFormController["tipe"],
+                                  hintText: "Tipe Akun",
+                                  inputFormatter: [
+                                    FilteringTextInputFormatter.deny(RegExp(
+                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                                  ],
+                                )),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Username",
+                              style: TypographyStyle.body4Medium.copyWith(
+                                  color: ColorStyle().grayscaleRange[600]),
+                            ),
+                            SizedBox(height: 8),
+                            Focus(
+                                onFocusChange: (status) {
+                                  controller.textFormController["username"]
+                                      ?.onFocus = status;
+                                  controller.update();
+                                },
+                                child: CustomTextField(
+                                  controller:
+                                      controller.textFormController["username"],
+                                  hintText: "Username",
+                                  inputFormatter: [
+                                    FilteringTextInputFormatter.deny(RegExp(
+                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                                  ],
+                                )),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Password",
+                              style: TypographyStyle.body4Medium.copyWith(
+                                  color: ColorStyle().grayscaleRange[600]),
+                            ),
+                            SizedBox(height: 8),
+                            Focus(
+                                onFocusChange: (status) {
+                                  controller.textFormController["password"]
+                                      ?.onFocus = status;
+                                  controller.update();
+                                },
+                                child: CustomTextField(
+                                  controller:
+                                      controller.textFormController["password"],
+                                  hintText: "Password",
+                                  inputFormatter: [
+                                    FilteringTextInputFormatter.deny(RegExp(
+                                        r'[0-9_,*()!@#$%^&`~|\\\[\]+=]')),
+                                  ],
+                                )),
+                          ],
+                        ),
                         SizedBox(height: 32),
                         CustomButton(
                           // isLoading: false,
                           onPressed: () async {
                             bool response = await addDataController.postData(
-                              controller
-                                  .textFormController["tipe"]!.controller!.text,
-                              controller.textFormController["token"]!
-                                  .controller!.text,
-                              controller.textFormController["password"]!
-                                  .controller!.text,
                               controller
                                   .textFormController["nama"]!.controller!.text,
                               controller
@@ -321,14 +311,32 @@ class AddDataSectionView extends StatelessWidget {
                               controller.textFormController["catatan"]!
                                   .controller!.text,
                             );
+                            bool response2 =
+                                await addDataController.postDataUser(
+                              controller
+                                  .textFormController["tipe"]!.controller!.text,
+                              '${DeviceUtils.getRandomString(8)}',
+                              controller.textFormController["username"]!
+                                  .controller!.text,
+                              controller.textFormController["password"]!
+                                  .controller!.text,
+                              controller
+                                  .textFormController["nidn"]!.controller!.text,
+                            );
                             if (response) {
-                              ScaffoldMessenger(
-                                child: Text("Data Berhasil Ditambah"),
-                              );
+                              Fluttertoast.showToast(
+                                  msg: "Data Berhasil Ditambah",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity
+                                      .BOTTOM // Also possible "TOP" and "CENTER"
+                                  );
                             } else {
-                              ScaffoldMessenger(
-                                child: Text("Data Gagal Ditambah"),
-                              );
+                              Fluttertoast.showToast(
+                                  msg: "Data Gagal Ditambah",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity
+                                      .BOTTOM // Also possible "TOP" and "CENTER"
+                                  );
                             }
                           },
                           color: ColorStyle.secondaryColor,

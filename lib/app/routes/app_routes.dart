@@ -9,7 +9,8 @@ abstract class Routes {
   static const SELECT_ROLE = _Paths.SELECT_ROLE;
   static const DASHBOARD = _Paths.DASHBOARD;
   static const TENTANG = _Paths.TENTANG;
-  static const EDIT = _Paths.EDIT;
+  static const EDITDATA = _Paths.EDITDATA;
+  static const EDITSTATUS = _Paths.EDITSTATUS;
   static const ADD = _Paths.ADD;
   // static const DETAIL = _Paths.DETAIL;
 }
@@ -22,7 +23,8 @@ abstract class _Paths {
   static const SELECT_ROLE = '/select-role';
   static const DASHBOARD = '/dashboard';
   static const TENTANG = '/dashboard/sections/profile/sections';
-  static const EDIT = '/dashboard/sections/profile/sections/edit';
+  static const EDITDATA = '/dashboard/sections/profile/sections/edit_data';
+  static const EDITSTATUS = '/dashboard/sections/profile/sections/edit_status';
   static const ADD = '/dashboard/sections/profile/sections/add';
   // static const DETAIL = '/dashboard/sections/detail';
 }

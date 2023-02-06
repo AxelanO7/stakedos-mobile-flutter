@@ -8,6 +8,10 @@ class LoginController extends GetxController {
     "password": TextFieldController(
         controller: TextEditingController(), onFocus: false, isObscure: true),
   };
+  static late String nidnId;
+  // List<Login> loginData = [];
+  // Login? choosenUser;
+
   bool isLoggingIn = false;
 
   final count = 0.obs;
@@ -77,6 +81,7 @@ class LoginController extends GetxController {
     var result = await AuthUtils.doLogin(
         textFormController["nidn"]!.controller!.text,
         textFormController["password"]!.controller!.text);
+    // print(nidnId);
     if (result) {
       Get.offAllNamed(Routes.DASHBOARD);
       return;

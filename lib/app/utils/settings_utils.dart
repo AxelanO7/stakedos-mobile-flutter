@@ -1,4 +1,3 @@
-
 import 'package:get_storage/get_storage.dart';
 
 class SettingsUtils {
@@ -10,6 +9,13 @@ class SettingsUtils {
   static Future<void> set(String key, String value) async {
     final GetStorage box = GetStorage();
     await box.write(key, value);
+    // print(box.read(key));
+    // box.listen(() {
+    //   print('change');
+    // });
+    // box.listenKey(key, (value) {
+    //   print('new key is $key');
+    // });
   }
 
   static Future<String> getString(String key) async {

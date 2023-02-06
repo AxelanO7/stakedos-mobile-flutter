@@ -47,7 +47,7 @@ class ListStatusMobilePage extends StatelessWidget {
                               physics: ScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: controller.dosenList.length,
-                              itemBuilder: (BuildContext context, int index) {
+                              itemBuilder: (context, index) {
                                 var item = controller.dosenList[index];
                                 return ListItem(
                                   () => controller.tapItem(

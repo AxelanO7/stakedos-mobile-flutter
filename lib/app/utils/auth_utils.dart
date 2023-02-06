@@ -1,14 +1,16 @@
-// import 'package:stakedos/app/apis/auth/login_api.dart';
-// import 'package:stakedos/app/apis/auth/login_guest_api.dart';
 import 'dart:convert';
 
 import 'package:firebase_database/firebase_database.dart';
-import 'package:stakedos/app/apis/auth/login_api.dart';
 import 'package:stakedos/app/models/index.dart';
+import 'package:stakedos/app/modules/dashboard/controllers/dashboard_controller.dart';
+import 'package:stakedos/app/modules/login/controllers/login_controller.dart';
 
 import 'settings_utils.dart';
 
 class AuthUtils {
+  static final String _selectId = 'select';
+  static final String _idUser = 'user';
+  static final String _tokenM = 'token';
   static final String _skLogin = 'is_login';
   static final String _skGuest = 'is_guest_mode';
   static final String _skMobileToken = 'token';
@@ -42,9 +44,11 @@ class AuthUtils {
   // }
 
   static doLogout() async {
-    await SettingsUtils.remove(_skMobileToken);
-    await SettingsUtils.remove(_skUserId);
-    await SettingsUtils.remove(_skLogin);
+    await SettingsUtils.remove(DashboardController.nidnId);
+    await SettingsUtils.remove(LoginController.nidnId);
+    // await SettingsUtils.remove(_skMobileToken);
+    // await SettingsUtils.remove(_skUserId);
+    // await SettingsUtils.remove(_skLogin);
   }
 
   static doLogin(String userIdentifier, String password) async {
@@ -64,10 +68,13 @@ class AuthUtils {
           userData.password == password) {
         // print(userData.token);
         // print(userData.id);
-        await setMobileToken(userData.token ?? "");
-        await setUserId(userData.id.toString());
+        // _skMobileToken.replaceAll(_skMobileToken, userData.token!);
+        // _skUserId.replaceAll(_skUserId, userData.id.toString());
+        setMobileToken(userData.token ?? "");
+        setUserId(userData.id.toString());
         // print(_skMobileToken);
         // print(_skUserId);
+        // LoginController.nidnId = userData.id!;
         isLoggedIn = true;
       }
     });
@@ -138,9 +145,10 @@ class AuthUtils {
   }
 
   static Future<bool> setMobileToken(String token) async {
-    print(token);
+    // print(token);
     setLoggedIn(true);
     await SettingsUtils.set(_skMobileToken, token);
+    // print(await SettingsUtils.getString(_skMobileToken));
     return true;
   }
 
@@ -168,12 +176,25 @@ class AuthUtils {
   }
 
   static Future<void> setUserId(String id) async {
-    print(id);
+    // print(id);
     await SettingsUtils.set(_skUserId, id);
+    // LoginController.nidnId = id;
+    // print(await SettingsUtils.getString(_skUserId));
+  }
+
+  static Future<void> setSelectId(String id) async {
+    // print(id);
+    await SettingsUtils.set(_selectId, id);
+    // LoginController.nidnId = id;
+    print(await SettingsUtils.getString(_selectId));
   }
 
   static Future<String> getUserId() async {
     return await SettingsUtils.getString(_skUserId);
+  }
+
+  static Future<String> getSelectId() async {
+    return await SettingsUtils.getString(_selectId);
   }
 
   // static Future<void> setUserData(User user) async {

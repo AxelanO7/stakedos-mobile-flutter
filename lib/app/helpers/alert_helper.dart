@@ -51,4 +51,51 @@ class AlertHelper {
     );
     return data;
   }
+
+  static showScaleDialog(Widget content,
+      {bool barrierDismissible: true, bool useTransparent: false}) async {
+    var data;
+    if (!(Get.isSnackbarOpen) && !(Get.isDialogOpen ?? false)) {
+      data = await showGeneralDialog(
+          barrierColor: Colors.black.withOpacity(0.5),
+          transitionBuilder: (context, a1, a2, widget) {
+            return Transform.scale(
+              scale: a1.value,
+              child: Opacity(
+                opacity: a1.value,
+                child: SafeArea(
+                  minimum: EdgeInsets.symmetric(
+                      horizontal: context.isTablet
+                          ? context.isLargeTablet
+                              ? Get.width * .25
+                              : Get.width * .15
+                          : 0,
+                      vertical: context.isTablet
+                          ? context.isLargeTablet
+                              ? Get.height * .02
+                              : 0
+                          : 0),
+                  child: AlertDialog(
+                      backgroundColor:
+                          useTransparent ? Colors.transparent : null,
+                      contentPadding: EdgeInsets.zero,
+                      shape: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.transparent, width: 5.0),
+                          borderRadius: BorderRadius.circular(16.0)),
+                      content: ClipRRect(
+                          borderRadius: BorderRadius.circular(16.0),
+                          child: content)),
+                ),
+              ),
+            );
+          },
+          transitionDuration: Duration(milliseconds: 200),
+          barrierDismissible: barrierDismissible,
+          barrierLabel: '',
+          context: Get.context!,
+          pageBuilder: (context, animation1, animation2) => SizedBox());
+    }
+    return data;
+  }
 }

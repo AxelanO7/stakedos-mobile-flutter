@@ -1,12 +1,11 @@
 import 'package:get/get.dart';
-import 'package:stakedos/app/modules/dashboard/views/sections/list_status/detail/detail.dart';
 import 'package:stakedos/app/modules/dashboard/views/sections/profile/sections/add/add_data_view.dart';
-import 'package:stakedos/app/providers/list_dosen.dart';
+import 'package:stakedos/app/modules/dashboard/views/sections/profile/sections/edit_status/edit_status_view.dart';
 
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/dashboard/views/sections/profile/sections/about_view.dart';
-import '../modules/dashboard/views/sections/profile/sections/edit/edit_data_view.dart';
+import '../modules/dashboard/views/sections/profile/sections/edit_data/edit_data_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -52,8 +51,12 @@ class AppPages {
       page: () => const AboutSectionView(),
     ),
     GetPage(
-      name: _Paths.EDIT,
-      page: () => const EditDataSectionView(),
+      name: _Paths.EDITDATA,
+      page: () => EditDataSectionView(),
+    ),
+    GetPage(
+      name: _Paths.EDITSTATUS,
+      page: () => const EditStatusSectionView(),
     ),
     GetPage(
       name: _Paths.ADD,
